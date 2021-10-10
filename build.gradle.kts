@@ -7,6 +7,7 @@ plugins {
 
 repositories {
     mavenCentral()
+    maven("https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven")
 }
 
 tasks.wrapper {
@@ -42,6 +43,10 @@ kotlin {
         }
         main {
             dependencies {
+                val kotlinxHtmlVersion = "0.7.2"
+
+                implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:$kotlinxHtmlVersion")
+                implementation("org.jetbrains.kotlinx:kotlinx-html:$kotlinxHtmlVersion")
             }
         }
     }
