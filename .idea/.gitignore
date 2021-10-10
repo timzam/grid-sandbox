@@ -12,6 +12,7 @@ inspectionProfiles
 compiler.xml
 encodings.xml
 gradle.xml
+jarRepositories.xml
 misc.xml
 modules.xml
 vcs.xml
