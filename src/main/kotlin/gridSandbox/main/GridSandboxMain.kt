@@ -1,7 +1,7 @@
 package gridSandbox.main
 
-import gridSandbox.main.entryPoint.siteTask
-import gridSandbox.process.processSiteTask
+import gridSandbox.main.entryPoint.boxTasks
+import gridSandbox.process.processBoxTasks
 
 fun main(): Unit =
-    processSiteTask(siteTask)
+    processBoxTasks(boxTasks)

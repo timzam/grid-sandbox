@@ -1,13 +1,16 @@
 package gridSandbox.process
 
-import gridSandbox.data.input.SiteTask
+import gridSandbox.data.input.BoxTask
 import gridSandbox.data.output.SiteOutput
 import gridSandbox.getPageResult
 import java.io.File
 
-fun processSiteTask(siteTask: SiteTask) {
+fun processBoxTasks(boxTasks: List<BoxTask>) {
     val pageOutputs =
-        siteTask.pageTasks.map { pageTask -> getPageResult(pageTask) }
+        boxTasks.map { boxTask ->
+            val pageTask = boxTask.toPageTask()
+            getPageResult(pageTask)
+        }
     val siteOutput = SiteOutput(pageOutputs)
     writeSiteOutput(siteOutput)
 }

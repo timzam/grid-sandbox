@@ -1,12 +1,5 @@
 package gridSandbox.main.entryPoint
 
-import gridSandbox.data.input.Page
-import gridSandbox.data.input.PageTask
-import gridSandbox.data.input.SiteTask
+import gridSandbox.data.input.BoxTask
 
-val siteTask: SiteTask =
-    SiteTask(
-        PageTask(
-            "cities.html", Page("Cities", "hello!"),
-        ),
-    )
+val boxTasks: List<BoxTask> = listOf(citiesTask, kBaseTask)
