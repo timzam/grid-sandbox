@@ -1,13 +1,11 @@
 package gridSandbox.main.entryPoint
 
+import gridSandbox.data.box.Box
+import gridSandbox.data.box.ContainerBox
 import gridSandbox.data.input.BoxTask
-import gridSandbox.data.input.Page
-import gridSandbox.data.input.PageTask
-
-internal val citiesPageTask: PageTask
-    get() = PageTask(
-        "cities.html", Page("Cities", "cities!"),
-    )
 
 internal val citiesTask: BoxTask
-    get() = BoxTask("cities.html", "Cities")
+    get() = BoxTask("cities.html", "Cities", citiesRootBox)
+
+private val citiesRootBox: Box
+    get() = ContainerBox()

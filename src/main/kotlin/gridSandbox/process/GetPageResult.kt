@@ -13,13 +13,12 @@ import kotlinx.html.meta
 import kotlinx.html.title
 
 fun getPageResult(pageTask: PageTask): PageOutput {
-    val (title, bodyText) = pageTask.page
     val document =
         createHTMLDocument().html {
             lang = "en"
             head {
                 meta("viewport", "width=device-width, initial-scale=1")
-                title(title)
+                title(pageTask.title)
                 link("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css", "stylesheet") {
                     integrity = "sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
                     attributes["crossorigin"] = "anonymous"
@@ -28,7 +27,7 @@ fun getPageResult(pageTask: PageTask): PageOutput {
                 link("assets/css/grid-sandbox.css", "stylesheet")
             }
             body {
-                +bodyText
+                pageTask.textSupplier(this)
             }
         }
     val htmlText = document.serialize()

@@ -1,6 +1,9 @@
 package gridSandbox.data.input
 
-data class PageTask constructor(
+import kotlinx.html.BODY
+
+data class PageTask internal constructor(
     val outputFileName: String,
-    val page: Page,
+    val title: String,
+    val textSupplier: (BODY) -> Unit,
 )
