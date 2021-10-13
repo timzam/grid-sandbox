@@ -32,7 +32,7 @@ private fun country(countryName: String, capitalName: String): Box =
         span("country"),
         spanStringText(countryName, getCountryId(countryName)),
         span("with capital:"),
-        spanReference(capitalName),
+        spanReference(capitalName, getCityId(capitalName)),
     )
 
 private fun getCountryId(countryName: String): String =
@@ -43,7 +43,7 @@ private fun city(cityName: String, countryName: String): Box =
         span("city"),
         spanStringText(cityName, getCityId(cityName)),
         span(" ("),
-        spanReference(countryName),
+        spanReference(countryName, getCountryId(countryName)),
         span(")"),
     )
 
