@@ -6,7 +6,7 @@ import kotlinx.html.span
 
 class Span internal constructor(
     private val text: String,
-    private val spanClass: String = "",
+    private val spanClass: String? = null,
     private val sourceId: String = "",
     private val referenceId: String = "",
 ) : Box {

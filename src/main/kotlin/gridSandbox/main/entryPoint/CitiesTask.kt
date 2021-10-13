@@ -44,7 +44,7 @@ private fun city(cityName: String, countryName: String): Box =
         span("city"),
         spanStringText(cityName, getCityId(cityName)),
         spanContainer(
-            span(" ("),
+            span("("),
             spanReference(countryName, getCountryId(countryName)),
             span(")"),
         ),
