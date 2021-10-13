@@ -3,6 +3,7 @@ package gridSandbox.main.entryPoint
 import gridSandbox.data.box.Box
 import gridSandbox.data.box.flexContainer
 import gridSandbox.data.box.span
+import gridSandbox.data.box.spanContainer
 import gridSandbox.data.box.spanReference
 import gridSandbox.data.box.spanStringText
 import gridSandbox.data.input.BoxTask
@@ -42,9 +43,11 @@ private fun city(cityName: String, countryName: String): Box =
     flexContainer(
         span("city"),
         spanStringText(cityName, getCityId(cityName)),
-        span(" ("),
-        spanReference(countryName, getCountryId(countryName)),
-        span(")"),
+        spanContainer(
+            span(" ("),
+            spanReference(countryName, getCountryId(countryName)),
+            span(")"),
+        ),
     )
 
 private fun getCityId(cityName: String): String =

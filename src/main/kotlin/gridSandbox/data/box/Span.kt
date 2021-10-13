@@ -27,14 +27,14 @@ class Span internal constructor(
 
 }
 
-fun span(text: String): Box =
+fun span(text: String): Span =
     Span(text)
 
-fun spanKeyword(text: String): Box =
+fun spanKeyword(text: String): Span =
     Span(text, "keyword")
 
-fun spanStringText(text: String, sourceId: String): Box =
+fun spanStringText(text: String, sourceId: String): Span =
     Span(text, "string-text", sourceId = sourceId)
 
-fun spanReference(text: String, referenceId: String): Box =
+fun spanReference(text: String, referenceId: String): Span =
     Span(text, "reference", referenceId = referenceId)
