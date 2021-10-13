@@ -64,3 +64,11 @@ body {
   color: #9876AA;
   font-weight: bold;
 }
+
+[sourceId]:hover {
+  background-color: #532B2E;
+}
+
+.reference-highlight {
+  background-color: #155221;
+}
