@@ -65,7 +65,8 @@ body {
   font-weight: bold;
 }
 
-[sourceId]:hover {
+[sourceId]:hover,
+.source-highlight {
   background-color: #532B2E;
 }
 

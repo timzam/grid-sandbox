@@ -1,48 +1,82 @@
 window.onload = function () {
 
-  function getEventElement(e) {
-    let event = e || window.event;
-    let el = event.target || el.srcElement;
-    return el;
+  function getEventElement(mouseEvent) {
+    let event = mouseEvent || window.event;
+    return event.target || event.srcElement;
   }
 
-  function hasSourceIdAttr(el) {
-    return el.hasAttribute("sourceId");
+  const sourceIdAttr = "sourceId";
+  const referenceIdAttr = "referenceId";
+
+  const referenceHighlightClass = "reference-highlight";
+  const sourceHighlightClass = "source-highlight";
+
+  function getReferenceElementsForId(sourceId) {
+    return document.querySelectorAll(`[${referenceIdAttr}=${sourceId}]`);
   }
 
-  document.onmouseover = function (e) {
-    var el = getEventElement(e);
-    if (hasSourceIdAttr(el)) {
-      mouseOverSourceId(el)
+  function getReferenceElements(element, attr) {
+    let id = element.getAttribute(attr)
+    return getReferenceElementsForId(id);
+  }
+
+  function getSourceElement(element) {
+    let referenceId = element.getAttribute(referenceIdAttr)
+    return document.querySelector(`[${sourceIdAttr}=${referenceId}]`);
+  }
+
+  function addClass(element, aClass) {
+    element.classList.add(aClass)
+  }
+
+  function removeClass(element, aClass) {
+    element.classList.remove(aClass)
+  }
+
+  function addClasses(elements, aClass) {
+    for (const element of elements) {
+      addClass(element, aClass);
+    }
+  }
+
+  function removeClasses(elements, aClass) {
+    for (const element of elements) {
+      removeClass(element, aClass);
+    }
+  }
+
+  function addReferenceClasses(element, attr) {
+    if (element.hasAttribute(attr)) {
+      let referenceElements = getReferenceElements(element, attr);
+      addClasses(referenceElements, referenceHighlightClass);
+    }
+  }
+
+  function removeReferenceClasses(element, attr) {
+    if (element.hasAttribute(attr)) {
+      let referenceElements = getReferenceElements(element, attr);
+      removeClasses(referenceElements, referenceHighlightClass);
+    }
+  }
+
+  document.onmouseover = function (event) {
+    var element = getEventElement(event);
+    addReferenceClasses(element, sourceIdAttr);
+    addReferenceClasses(element, referenceIdAttr);
+    if (element.hasAttribute(referenceIdAttr)) {
+      let sourceElement = getSourceElement(element);
+      addClass(sourceElement, sourceHighlightClass);
     }
   };
 
-  document.onmouseout = function (e) {
-    var el = getEventElement(e);
-    if (hasSourceIdAttr(el)) {
-      mouseOutSourceId(el)
+  document.onmouseout = function (event) {
+    var element = getEventElement(event);
+    removeReferenceClasses(element, sourceIdAttr);
+    removeReferenceClasses(element, referenceIdAttr);
+    if (element.hasAttribute(referenceIdAttr)) {
+      let sourceElement = getSourceElement(element);
+      removeClass(sourceElement, sourceHighlightClass);
     }
   };
-
-  function getReferenceElements(e) {
-    let sourceId = e.getAttribute('sourceId')
-    return document.querySelectorAll(`[referenceId=${sourceId}]`);
-  }
-
-  const referenceHighlight = "reference-highlight";
-
-  function mouseOverSourceId(e) {
-    let elements = getReferenceElements(e);
-    for (const element of elements) {
-      element.classList.add(referenceHighlight)
-    }
-  }
-
-  function mouseOutSourceId(e) {
-    let elements = getReferenceElements(e);
-    for (const element of elements) {
-      element.classList.remove(referenceHighlight)
-    }
-  }
 
 }
