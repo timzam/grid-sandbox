@@ -1,8 +1,11 @@
 package gridSandbox.main.entryPoint
 
 import gridSandbox.data.box.Box
-import gridSandbox.data.box.FlexContainerBox
-import gridSandbox.data.box.KeywordSpan
+import gridSandbox.data.box.flexContainerBox
+import gridSandbox.data.box.flexContainerBoxSameLevel
+import gridSandbox.data.box.span
+import gridSandbox.data.box.spanKeyword
+import gridSandbox.data.box.verticalFlexContainerBox
 import gridSandbox.data.input.BoxTask
 
 internal val citiesTask: BoxTask
@@ -10,6 +13,10 @@ internal val citiesTask: BoxTask
 
 private val citiesRootBox: Box
     get() =
-        FlexContainerBox(
-            KeywordSpan("concept"),
+        flexContainerBox(
+            verticalFlexContainerBox(
+                flexContainerBoxSameLevel(
+                    spanKeyword("display"), span("schema elements"),
+                ),
+            ),
         )

@@ -10,7 +10,7 @@ data class BoxTask constructor(
 
     fun toPageTask(): PageTask =
         PageTask(outputFileName, title) { body ->
-            val block = rootBox.getBlock()
+            val block = rootBox.getBlock(1)
             block(body)
         }
 

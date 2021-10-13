@@ -4,6 +4,6 @@ import kotlinx.html.FlowContent
 
 interface Box {
 
-    fun getBlock(): FlowContent.() -> Unit
+    fun getBlock(currentLevel: Int): FlowContent.() -> Unit
 
 }
