@@ -1,11 +1,10 @@
 package gridSandbox.main.entryPoint
 
 import gridSandbox.data.box.Box
-import gridSandbox.data.box.flexContainerBox
-import gridSandbox.data.box.simpleFlexContainerBox
+import gridSandbox.data.box.flexContainer
 import gridSandbox.data.box.span
-import gridSandbox.data.box.spanKeyword
-import gridSandbox.data.box.verticalFlexContainerBox
+import gridSandbox.data.box.spanReference
+import gridSandbox.data.box.spanStringText
 import gridSandbox.data.input.BoxTask
 
 internal val citiesTask: BoxTask
@@ -13,29 +12,34 @@ internal val citiesTask: BoxTask
 
 private val citiesRootBox: Box
     get() =
-        flexContainerBox(
-            verticalFlexContainerBox(
-                simpleFlexContainerBox(
-                    spanKeyword("display"), span("schema elements"),
-                ),
-                simpleFlexContainerBox(
-                    verticalFlexContainerBox(
-                        simpleFlexContainerBox(
-                            spanKeyword("concept"),
-                        ),
-                    ),
-                    verticalFlexContainerBox(
-                        simpleFlexContainerBox(
-                            spanKeyword("concept"),
-                        ),
-                    ),
-                ),
+        flexContainer(
+            displaySchemaElements(
+                concept("Country"),
+                concept("City"),
             ),
-            verticalFlexContainerBox(
-                simpleFlexContainerBox(
-                    spanKeyword("display"), span("all instances"),
-                ),
-                simpleFlexContainerBox(
-                ),
+            displayAllInstances(
+                country("Italy", "Rome"),
+                country("Germany", "Berlin"),
+                city("Rome", "Italy"),
+                city("Milan", "Italy"),
+                city("Berlin", "Germany"),
+                city("Munich", "Germany"),
             ),
         )
+
+private fun country(countryName: String, capitalName: String): Box =
+    flexContainer(
+        span("country"),
+        spanStringText(countryName),
+        span("with capital:"),
+        spanReference(capitalName),
+    )
+
+private fun city(cityName: String, countryName: String): Box =
+    flexContainer(
+        span("city"),
+        spanStringText(cityName),
+        span(" ("),
+        spanReference(countryName),
+        span(")"),
+    )

@@ -54,3 +54,13 @@ body {
   color: #CC7832;
   font-weight: bold;
 }
+
+.string-text {
+  color: #6A8759;
+  font-weight: bold;
+}
+
+.reference {
+  color: #9876AA;
+  font-weight: bold;
+}

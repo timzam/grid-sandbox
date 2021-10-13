@@ -40,7 +40,7 @@ class FlexContainerBox internal constructor(
 
 }
 
-fun flexContainerBox(vararg boxes: Box): Box =
+fun flexContainer(vararg boxes: Box): Box =
     FlexContainerBox(boxes.toList())
 
 fun simpleFlexContainerBox(vararg boxes: Box): Box =

@@ -21,3 +21,9 @@ fun span(text: String): Box =
 
 fun spanKeyword(text: String): Box =
     Span(text, "keyword")
+
+fun spanStringText(text: String): Box =
+    Span(text, "string-text")
+
+fun spanReference(text: String): Box =
+    Span(text, "reference")
