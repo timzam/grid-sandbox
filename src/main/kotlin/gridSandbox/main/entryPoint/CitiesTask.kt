@@ -30,16 +30,22 @@ private val citiesRootBox: Box
 private fun country(countryName: String, capitalName: String): Box =
     flexContainer(
         span("country"),
-        spanStringText(countryName),
+        spanStringText(countryName, getCountryId(countryName)),
         span("with capital:"),
         spanReference(capitalName),
     )
 
+private fun getCountryId(countryName: String): String =
+    "idCountry$countryName"
+
 private fun city(cityName: String, countryName: String): Box =
     flexContainer(
         span("city"),
-        spanStringText(cityName),
+        spanStringText(cityName, getCityId(cityName)),
         span(" ("),
         spanReference(countryName),
         span(")"),
     )
+
+private fun getCityId(cityName: String): String =
+    "idCity$cityName"

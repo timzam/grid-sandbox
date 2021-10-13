@@ -27,6 +27,9 @@ internal fun concept(conceptName: String): Box =
     verticalFlexContainerBox(
         simpleFlexContainerBox(
             spanKeyword("concept"),
-            spanStringText(conceptName),
+            spanStringText(conceptName, getConceptId(conceptName)),
         ),
     )
+
+private fun getConceptId(conceptName: String): String =
+    "idConcept$conceptName"
