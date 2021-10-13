@@ -1,32 +1,32 @@
 package gridSandbox.main.entryPoint
 
 import gridSandbox.data.box.Box
-import gridSandbox.data.box.simpleFlexContainerBox
-import gridSandbox.data.box.simpleHorizontalFlexContainerBox
+import gridSandbox.data.box.simpleFlexContainer
+import gridSandbox.data.box.simpleHorizontalFlexContainer
 import gridSandbox.data.box.span
 import gridSandbox.data.box.spanKeyword
 import gridSandbox.data.box.spanStringText
-import gridSandbox.data.box.verticalFlexContainerBox
+import gridSandbox.data.box.verticalFlexContainer
 
 internal fun displaySchemaElements(vararg boxes: Box): Box =
-    verticalFlexContainerBox(
-        simpleHorizontalFlexContainerBox(
+    verticalFlexContainer(
+        simpleHorizontalFlexContainer(
             spanKeyword("display"), span("schema elements"),
         ),
-        simpleFlexContainerBox(*boxes),
+        simpleFlexContainer(*boxes),
     )
 
 internal fun displayAllInstances(vararg boxes: Box): Box =
-    verticalFlexContainerBox(
-        simpleHorizontalFlexContainerBox(
+    verticalFlexContainer(
+        simpleHorizontalFlexContainer(
             spanKeyword("display"), span("all instances"),
         ),
-        simpleFlexContainerBox(*boxes),
+        simpleFlexContainer(*boxes),
     )
 
 internal fun concept(conceptName: String): Box =
-    verticalFlexContainerBox(
-        simpleFlexContainerBox(
+    verticalFlexContainer(
+        simpleFlexContainer(
             spanKeyword("concept"),
             spanStringText(conceptName, getConceptId(conceptName)),
         ),

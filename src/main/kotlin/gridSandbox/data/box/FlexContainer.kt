@@ -3,7 +3,7 @@ package gridSandbox.data.box
 import kotlinx.html.FlowContent
 import kotlinx.html.div
 
-class FlexContainerBox internal constructor(
+class FlexContainer internal constructor(
     private val boxes: List<Box>,
     private val directionClass: String = "",
     private val isSameLevel: Boolean = false,
@@ -48,13 +48,13 @@ class FlexContainerBox internal constructor(
 }
 
 fun flexContainer(vararg boxes: Box): Box =
-    FlexContainerBox(boxes.toList())
+    FlexContainer(boxes.toList())
 
-fun simpleFlexContainerBox(vararg boxes: Box): Box =
-    FlexContainerBox(boxes.toList(), isSameLevel = true, withVPadding = false, withHPadding = false)
+fun simpleFlexContainer(vararg boxes: Box): Box =
+    FlexContainer(boxes.toList(), isSameLevel = true, withVPadding = false, withHPadding = false)
 
-fun verticalFlexContainerBox(vararg boxes: Box): Box =
-    FlexContainerBox(boxes.toList(), "flex-column")
+fun verticalFlexContainer(vararg boxes: Box): Box =
+    FlexContainer(boxes.toList(), "flex-column")
 
-fun simpleHorizontalFlexContainerBox(vararg boxes: Box): Box =
-    FlexContainerBox(boxes.toList(), isSameLevel = true, withVPadding = false)
+fun simpleHorizontalFlexContainer(vararg boxes: Box): Box =
+    FlexContainer(boxes.toList(), isSameLevel = true, withVPadding = false)
