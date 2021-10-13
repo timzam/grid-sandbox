@@ -20,12 +20,14 @@ fun getPageResult(pageTask: PageTask): PageOutput {
             head {
                 meta("viewport", "width=device-width, initial-scale=1")
                 title(pageTask.title)
+                /*
                 link("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css", "stylesheet") {
                     integrity =
                         "sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
                     attributes["crossorigin"] = "anonymous"
                     attributes["referrerpolicy"] = "no-referrer"
                 }
+                */
                 link("assets/css/grid-sandbox.css", "stylesheet")
                 script("text/javascript", "assets/js/grid-sandbox.js") {}
             }

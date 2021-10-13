@@ -7,7 +7,8 @@ class FlexContainerBox internal constructor(
     private val boxes: List<Box>,
     private val directionClass: String = "",
     private val isSameLevel: Boolean = false,
-    private val withPadding: Boolean = true,
+    private val withVPadding: Boolean = true,
+    private val withHPadding: Boolean = true,
 ) : Box {
 
     override fun getBlock(currentLevel: Int): FlowContent.() -> Unit = {
@@ -20,14 +21,20 @@ class FlexContainerBox internal constructor(
             levelClass = "level-$currentLevel"
             nextLevel = currentLevel + 1
         }
-        val paddingClasses: String =
-            if (withPadding) {
-                "with-vpadding with-hpadding"
+        val vPaddingClass: String =
+            if (withVPadding) {
+                "with-vpadding"
+            } else {
+                ""
+            }
+        val hPaddingClass: String =
+            if (withHPadding) {
+                "with-hpadding"
             } else {
                 ""
             }
         val classes =
-            listOf("flex-container", paddingClasses, levelClass, directionClass)
+            listOf("flex-container", vPaddingClass, hPaddingClass, levelClass, directionClass)
                 .filter { s -> s.isNotEmpty() }
                 .joinToString(" ")
         div(classes) {
@@ -44,7 +51,10 @@ fun flexContainer(vararg boxes: Box): Box =
     FlexContainerBox(boxes.toList())
 
 fun simpleFlexContainerBox(vararg boxes: Box): Box =
-    FlexContainerBox(boxes.toList(), isSameLevel = true, withPadding = false)
+    FlexContainerBox(boxes.toList(), isSameLevel = true, withVPadding = false, withHPadding = false)
 
 fun verticalFlexContainerBox(vararg boxes: Box): Box =
     FlexContainerBox(boxes.toList(), "flex-column")
+
+fun simpleHorizontalFlexContainerBox(vararg boxes: Box): Box =
+    FlexContainerBox(boxes.toList(), isSameLevel = true, withVPadding = false)
