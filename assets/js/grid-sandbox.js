@@ -5,14 +5,6 @@ window.onload = function () {
     return event.target || event.srcElement;
   }
 
-  const sourceIdAttr = "sourceId";
-  const referenceIdAttr = "referenceId";
-  const originIdAttr = "originId";
-  const originReferenceIdAttr = "originReferenceId";
-
-  const referenceHighlightClass = "reference-highlight";
-  const sourceHighlightClass = "source-highlight";
-
   function getReferenceElements(element, attr, refIdAttr) {
     let id = element.getAttribute(attr)
     return document.querySelectorAll(`[${refIdAttr}="${id}"]`);
@@ -67,16 +59,26 @@ window.onload = function () {
     }
   }
 
+  const sourceIdAttr = "sourceId";
+  const referenceIdAttr = "referenceId";
+  const originIdAttr = "originId";
+  const originReferenceIdAttr = "originReferenceId";
+
+  const referenceHighlightClass = "reference-highlight";
+  const sourceHighlightClass = "source-highlight";
+  const originReferenceHighlightClass = "origin-reference-highlight";
+  const originSourceHighlightClass = "origin-source-highlight";
+
   document.onmouseover = function (event) {
     let element = getEventElement(event);
     addClassesForIdAttrs(element, sourceIdAttr, referenceIdAttr, referenceHighlightClass, sourceHighlightClass);
-    addClassesForIdAttrs(element, originIdAttr, originReferenceIdAttr, referenceHighlightClass, sourceHighlightClass);
+    addClassesForIdAttrs(element, originIdAttr, originReferenceIdAttr, originReferenceHighlightClass, originSourceHighlightClass);
   };
 
   document.onmouseout = function (event) {
     let element = getEventElement(event);
     removeClassesForIdAttrs(element, sourceIdAttr, referenceIdAttr, referenceHighlightClass, sourceHighlightClass);
-    removeClassesForIdAttrs(element, originIdAttr, originReferenceIdAttr, referenceHighlightClass, sourceHighlightClass);
+    removeClassesForIdAttrs(element, originIdAttr, originReferenceIdAttr, originReferenceHighlightClass, originSourceHighlightClass);
   };
 
 }

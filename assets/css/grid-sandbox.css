@@ -85,11 +85,19 @@ body {
 }
 
 [sourceId]:hover,
-[originId]:hover,
 .source-highlight {
   background-color: #532B2E;
 }
 
 .reference-highlight {
   background-color: #155221;
+}
+
+[originId]:hover,
+.origin-source-highlight {
+  background-color: #3A3A3A;
+}
+
+.origin-reference-highlight {
+  background-color: #5E5339;
 }
