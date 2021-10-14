@@ -58,7 +58,7 @@ body {
 }
 
 .level-4 {
-  background-color: #484848;
+  background-color: #494949;
 }
 
 .level-5 {
@@ -85,6 +85,7 @@ body {
 }
 
 [sourceId]:hover,
+[originId]:hover,
 .source-highlight {
   background-color: #532B2E;
 }

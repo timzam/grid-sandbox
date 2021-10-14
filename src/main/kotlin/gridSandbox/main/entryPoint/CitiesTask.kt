@@ -16,6 +16,9 @@ import gridSandbox.data.input.BoxTask
 internal val citiesTask: BoxTask
     get() = BoxTask("cities.html", "Cities", citiesRootBox)
 
+private const val COUNTRY_COUNTRY_CELL_ID: String = "CellCountryCountry"
+private const val WITH_CAPITAL_CELL_ID: String = "CellCountryWithCapital"
+
 private val citiesRootBox: Box
     get() =
         flexContainer(
@@ -27,9 +30,9 @@ private val citiesRootBox: Box
                         RefField("capital", "Country", "City"),
                     ),
                     editorCells = listOf(
-                        textCell("country"),
+                        textCell("country", COUNTRY_COUNTRY_CELL_ID),
                         fieldCell("name", "Country"),
-                        textCell("with capital:"),
+                        textCell("with capital:", WITH_CAPITAL_CELL_ID),
                         fieldCell("capital", "Country"),
                     ),
                 ),
@@ -64,7 +67,7 @@ private fun country(countryName: String, capitalName: String): Box =
     flexContainer(
         span("country"),
         spanStringText(countryName, getCountryId(countryName)),
-        span("with capital:"),
+        span("with capital:", WITH_CAPITAL_CELL_ID),
         spanReference(capitalName, getCityId(capitalName)),
     )
 

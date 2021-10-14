@@ -5,12 +5,13 @@ import gridSandbox.data.box.spanStringText
 
 class TextEditorCell internal constructor(
     private val text: String,
+    private val sourceInstanceId: String?,
 ) : EditorCell {
 
     override fun getSpan(): Span =
-        spanStringText(text)
+        spanStringText(text, originId = sourceInstanceId)
 
 }
 
-fun textCell(text: String): EditorCell =
-    TextEditorCell(text)
+fun textCell(text: String, sourceInstanceId: String? = null): EditorCell =
+    TextEditorCell(text, sourceInstanceId)
