@@ -9,6 +9,7 @@ import gridSandbox.data.box.spanStringText
 import gridSandbox.data.concept.RefField
 import gridSandbox.data.concept.SpecialField
 import gridSandbox.data.concept.fieldCell
+import gridSandbox.data.concept.spanCell
 import gridSandbox.data.concept.textCell
 import gridSandbox.data.input.BoxTask
 
@@ -41,9 +42,11 @@ private val citiesRootBox: Box
                     editorCells = listOf(
                         textCell("city"),
                         fieldCell("name", "City"),
-                        textCell("("),
-                        fieldCell("country", "City"),
-                        textCell(")"),
+                        spanCell(
+                            textCell("("),
+                            fieldCell("country", "City"),
+                            textCell(")"),
+                        ),
                     ),
                 ),
             ),

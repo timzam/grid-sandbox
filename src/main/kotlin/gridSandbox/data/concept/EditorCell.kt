@@ -1,3 +1,16 @@
 package gridSandbox.data.concept
 
-interface EditorCell : InterfaceElement
+import gridSandbox.data.box.Box
+import gridSandbox.data.box.Span
+import gridSandbox.data.box.flexContainer
+
+interface EditorCell : InterfaceElement {
+
+    fun getSpan(): Span
+
+    override fun getBox(): Box =
+        flexContainer(
+            getSpan(),
+        )
+
+}

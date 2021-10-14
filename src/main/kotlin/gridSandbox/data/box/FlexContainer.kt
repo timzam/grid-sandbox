@@ -53,6 +53,9 @@ fun flexContainer(vararg boxes: Box): Box =
 fun simpleFlexContainer(vararg boxes: Box): Box =
     FlexContainer(boxes.toList(), isSameLevel = true, withVPadding = false, withHPadding = false)
 
+fun nextLevelSimpleFlexContainer(vararg boxes: Box): Box =
+    FlexContainer(boxes.toList(), withVPadding = false)
+
 fun verticalFlexContainer(vararg boxes: Box): Box =
     FlexContainer(boxes.toList(), "flex-column")
 

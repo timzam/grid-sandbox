@@ -5,7 +5,7 @@ import kotlinx.html.span
 
 class SpanContainer internal constructor(
     private val spans: List<Span>,
-) : Box {
+) : Span {
 
     override fun getBlock(currentLevel: Int): FlowContent.() -> Unit = {
         span {
@@ -18,5 +18,5 @@ class SpanContainer internal constructor(
 
 }
 
-fun spanContainer(vararg spans: Span): Box =
+fun spanContainer(vararg spans: Span): Span =
     SpanContainer(spans.toList())

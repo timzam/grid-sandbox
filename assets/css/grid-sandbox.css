@@ -46,19 +46,23 @@ body {
 }
 
 .level-1 {
-  background-color: #303030;
+  background-color: #252525;
 }
 
 .level-2 {
-  background-color: #404040;
+  background-color: #303030;
 }
 
 .level-3 {
-  background-color: #505050;
+  background-color: #404040;
 }
 
 .level-4 {
-  background-color: #606060;
+  background-color: #484848;
+}
+
+.level-5 {
+  background-color: #555555;
 }
 
 .keyword {
