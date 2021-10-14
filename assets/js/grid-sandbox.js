@@ -13,13 +13,9 @@ window.onload = function () {
   const referenceHighlightClass = "reference-highlight";
   const sourceHighlightClass = "source-highlight";
 
-  function getReferenceElementsForId(sourceId, refIdAttr) {
-    return document.querySelectorAll(`[${refIdAttr}="${sourceId}"]`);
-  }
-
   function getReferenceElements(element, attr, refIdAttr) {
     let id = element.getAttribute(attr)
-    return getReferenceElementsForId(id, refIdAttr);
+    return document.querySelectorAll(`[${refIdAttr}="${id}"]`);
   }
 
   function getSourceElement(element, srcIdAttr, refIdAttr) {
@@ -35,44 +31,36 @@ window.onload = function () {
     element.classList.remove(aClass)
   }
 
-  function addClasses(elements, aClass) {
-    for (const element of elements) {
-      addClass(element, aClass);
-    }
-  }
-
-  function removeClasses(elements, aClass) {
-    for (const element of elements) {
-      removeClass(element, aClass);
-    }
-  }
-
   function addReferenceClasses(element, attr, refIdAttr, highlightClass) {
     if (element.hasAttribute(attr)) {
       let referenceElements = getReferenceElements(element, attr, refIdAttr);
-      addClasses(referenceElements, highlightClass);
+      for (const refElement of referenceElements) {
+        addClass(refElement, highlightClass);
+      }
     }
   }
 
   function removeReferenceClasses(element, attr, refIdAttr, highlightClass) {
     if (element.hasAttribute(attr)) {
       let referenceElements = getReferenceElements(element, attr, refIdAttr);
-      removeClasses(referenceElements, highlightClass);
+      for (const refElement of referenceElements) {
+        removeClass(refElement, highlightClass);
+      }
     }
   }
 
-  function addClasses2(element, srcIdAttr, refIdAttr, highlightClass, srcHighlightClass) {
-    addReferenceClasses(element, srcIdAttr, refIdAttr, highlightClass);
-    addReferenceClasses(element, refIdAttr, refIdAttr, highlightClass);
+  function addClassesForIdAttrs(element, srcIdAttr, refIdAttr, refHighlightClass, srcHighlightClass) {
+    addReferenceClasses(element, srcIdAttr, refIdAttr, refHighlightClass);
+    addReferenceClasses(element, refIdAttr, refIdAttr, refHighlightClass);
     if (element.hasAttribute(refIdAttr)) {
       let sourceElement = getSourceElement(element, srcIdAttr, refIdAttr);
       addClass(sourceElement, srcHighlightClass);
     }
   }
 
-  function removeClasses2(element, srcIdAttr, refIdAttr, highlightClass, srcHighlightClass) {
-    removeReferenceClasses(element, srcIdAttr, refIdAttr, highlightClass);
-    removeReferenceClasses(element, refIdAttr, refIdAttr, highlightClass);
+  function removeClassesForIdAttrs(element, srcIdAttr, refIdAttr, refHighlightClass, srcHighlightClass) {
+    removeReferenceClasses(element, srcIdAttr, refIdAttr, refHighlightClass);
+    removeReferenceClasses(element, refIdAttr, refIdAttr, refHighlightClass);
     if (element.hasAttribute(refIdAttr)) {
       let sourceElement = getSourceElement(element, srcIdAttr, refIdAttr);
       removeClass(sourceElement, srcHighlightClass);
@@ -81,14 +69,14 @@ window.onload = function () {
 
   document.onmouseover = function (event) {
     let element = getEventElement(event);
-    addClasses2(element, sourceIdAttr, referenceIdAttr, referenceHighlightClass, sourceHighlightClass);
-    addClasses2(element, originIdAttr, originReferenceIdAttr, referenceHighlightClass, sourceHighlightClass);
+    addClassesForIdAttrs(element, sourceIdAttr, referenceIdAttr, referenceHighlightClass, sourceHighlightClass);
+    addClassesForIdAttrs(element, originIdAttr, originReferenceIdAttr, referenceHighlightClass, sourceHighlightClass);
   };
 
   document.onmouseout = function (event) {
     let element = getEventElement(event);
-    removeClasses2(element, sourceIdAttr, referenceIdAttr, referenceHighlightClass, sourceHighlightClass);
-    removeClasses2(element, originIdAttr, originReferenceIdAttr, referenceHighlightClass, sourceHighlightClass);
+    removeClassesForIdAttrs(element, sourceIdAttr, referenceIdAttr, referenceHighlightClass, sourceHighlightClass);
+    removeClassesForIdAttrs(element, originIdAttr, originReferenceIdAttr, referenceHighlightClass, sourceHighlightClass);
   };
 
 }
