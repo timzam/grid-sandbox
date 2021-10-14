@@ -6,6 +6,7 @@ import gridSandbox.data.box.span
 import gridSandbox.data.box.spanContainer
 import gridSandbox.data.box.spanReference
 import gridSandbox.data.box.spanStringText
+import gridSandbox.data.concept.SpecialField
 import gridSandbox.data.input.BoxTask
 
 internal val citiesTask: BoxTask
@@ -15,8 +16,18 @@ private val citiesRootBox: Box
     get() =
         flexContainer(
             displaySchemaElements(
-                concept("Country"),
-                concept("City"),
+                concept(
+                    "Country",
+                    fields = listOf(
+                        SpecialField("name"),
+                    ),
+                ),
+                concept(
+                    "City",
+                    fields = listOf(
+                        SpecialField("name"),
+                    ),
+                ),
             ),
             displayAllInstances(
                 country("Italy", "Rome"),
