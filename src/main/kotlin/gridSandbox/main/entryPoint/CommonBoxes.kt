@@ -13,6 +13,7 @@ import gridSandbox.data.box.verticalFlexContainer
 import gridSandbox.data.concept.ConceptField
 import gridSandbox.data.concept.EditorCell
 import gridSandbox.data.concept.InterfaceElement
+import gridSandbox.data.concept.getConceptId
 
 internal fun displaySchemaElements(vararg boxes: Box): Box =
     verticalFlexContainer(
@@ -47,9 +48,6 @@ internal fun concept(conceptName: String, fields: List<ConceptField>, editorCell
             elementsBox(editorCells),
         ),
     )
-
-private fun getConceptId(conceptName: String): String =
-    "idConcept$conceptName"
 
 private fun elementsBox(elements: List<InterfaceElement>): Box {
     val boxes = elements.map { field -> field.getBox() }

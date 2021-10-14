@@ -6,6 +6,7 @@ import gridSandbox.data.box.span
 import gridSandbox.data.box.spanContainer
 import gridSandbox.data.box.spanReference
 import gridSandbox.data.box.spanStringText
+import gridSandbox.data.concept.RefField
 import gridSandbox.data.concept.SpecialField
 import gridSandbox.data.concept.fieldCell
 import gridSandbox.data.concept.textCell
@@ -22,6 +23,7 @@ private val citiesRootBox: Box
                     "Country",
                     fields = listOf(
                         SpecialField("name", "Country"),
+                        RefField("capital", "Country", "City"),
                     ),
                     editorCells = listOf(
                         textCell("country"),
@@ -34,6 +36,7 @@ private val citiesRootBox: Box
                     "City",
                     fields = listOf(
                         SpecialField("name", "City"),
+                        RefField("country", "City", "Country"),
                     ),
                     editorCells = listOf(
                         textCell("city"),
