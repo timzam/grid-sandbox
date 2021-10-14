@@ -19,6 +19,10 @@ internal val citiesTask: BoxTask
 private const val COUNTRY_COUNTRY_CELL_ID: String = "CellCountryCountry"
 private const val WITH_CAPITAL_CELL_ID: String = "CellCountryWithCapital"
 
+private const val CITY_CITY_CELL_ID: String = "CellCityCity"
+private const val OPEN_PAREN_CELL_ID: String = "CellCityOpenParen"
+private const val CLOSE_PAREN_CELL_ID: String = "CellCityCloseParen"
+
 private val citiesRootBox: Box
     get() =
         flexContainer(
@@ -43,12 +47,12 @@ private val citiesRootBox: Box
                         RefField("country", "City", "Country"),
                     ),
                     editorCells = listOf(
-                        textCell("city"),
+                        textCell("city", CITY_CITY_CELL_ID),
                         fieldCell("name", "City"),
                         spanCell(
-                            textCell("("),
+                            textCell("(", OPEN_PAREN_CELL_ID),
                             fieldCell("country", "City"),
-                            textCell(")"),
+                            textCell(")", CLOSE_PAREN_CELL_ID),
                         ),
                     ),
                 ),
@@ -65,7 +69,7 @@ private val citiesRootBox: Box
 
 private fun country(countryName: String, capitalName: String): Box =
     flexContainer(
-        span("country"),
+        span("country", COUNTRY_COUNTRY_CELL_ID),
         spanStringText(countryName, getCountryId(countryName)),
         span("with capital:", WITH_CAPITAL_CELL_ID),
         spanReference(capitalName, getCityId(capitalName)),
@@ -76,12 +80,12 @@ private fun getCountryId(countryName: String): String =
 
 private fun city(cityName: String, countryName: String): Box =
     flexContainer(
-        span("city"),
+        span("city", CITY_CITY_CELL_ID),
         spanStringText(cityName, getCityId(cityName)),
         spanContainer(
-            span("("),
+            span("(", OPEN_PAREN_CELL_ID),
             spanReference(countryName, getCountryId(countryName)),
-            span(")"),
+            span(")", CLOSE_PAREN_CELL_ID),
         ),
     )
 
