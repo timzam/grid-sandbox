@@ -62,7 +62,7 @@ body {
 }
 
 .level-5 {
-  background-color: #555555;
+  background-color: #252525;
 }
 
 .keyword {
@@ -89,6 +89,7 @@ body {
   background-color: #532B2E;
 }
 
+[referenceId]:hover,
 .reference-highlight {
   background-color: #155221;
 }
@@ -98,6 +99,7 @@ body {
   background-color: #3A3A3A;
 }
 
+[originReferenceId]:hover,
 .origin-reference-highlight {
   background-color: #5E5339;
 }

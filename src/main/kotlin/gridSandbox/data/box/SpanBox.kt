@@ -47,5 +47,10 @@ fun spanStringText(
         text, "string-text", sourceId = sourceId, originId = originId, originReferenceId = originReferenceId,
     )
 
-fun spanReference(text: String, referenceId: String, originReferenceId: String? = null): Span =
-    SpanBox(text, "reference", referenceId = referenceId, originReferenceId = originReferenceId)
+fun spanReference(
+    text: String, referenceId: String, originReferenceId: String? = null, originId: String? = null,
+): Span =
+    SpanBox(
+        text, "reference",
+        referenceId = referenceId, originReferenceId = originReferenceId, originId = originId,
+    )

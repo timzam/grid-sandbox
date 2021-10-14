@@ -10,7 +10,7 @@ class FieldEditorCell internal constructor(
 ) : EditorCell {
 
     override fun getSpan(): Span =
-        spanReference(fieldName, fieldId, fieldCellId)
+        spanReference(fieldName, fieldId, originId = fieldCellId)
 
     private val fieldId: String
         get() = getFieldId(fieldName, conceptName)

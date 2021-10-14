@@ -10,24 +10,11 @@ window.onload = function () {
     return document.querySelectorAll(`[${refIdAttr}="${id}"]`);
   }
 
-  function getSourceElement(element, srcIdAttr, refIdAttr) {
-    let referenceId = element.getAttribute(refIdAttr)
-    return document.querySelector(`[${srcIdAttr}="${referenceId}"]`);
-  }
-
-  function addClass(element, aClass) {
-    element.classList.add(aClass)
-  }
-
-  function removeClass(element, aClass) {
-    element.classList.remove(aClass)
-  }
-
   function addReferenceClasses(element, attr, refIdAttr, highlightClass) {
     if (element.hasAttribute(attr)) {
       let referenceElements = getReferenceElements(element, attr, refIdAttr);
       for (const refElement of referenceElements) {
-        addClass(refElement, highlightClass);
+        refElement.classList.add(highlightClass)
       }
     }
   }
@@ -36,27 +23,25 @@ window.onload = function () {
     if (element.hasAttribute(attr)) {
       let referenceElements = getReferenceElements(element, attr, refIdAttr);
       for (const refElement of referenceElements) {
-        removeClass(refElement, highlightClass);
+        refElement.classList.remove(highlightClass)
       }
     }
   }
 
-  function addClassesForIdAttrs(element, srcIdAttr, refIdAttr, refHighlightClass, srcHighlightClass) {
+  function addClassesForIdAttrs(element, srcIdAttr, refIdAttr, refHighlightClass, srcHighlightClass, showSiblingReferences) {
     addReferenceClasses(element, srcIdAttr, refIdAttr, refHighlightClass);
-    addReferenceClasses(element, refIdAttr, refIdAttr, refHighlightClass);
-    if (element.hasAttribute(refIdAttr)) {
-      let sourceElement = getSourceElement(element, srcIdAttr, refIdAttr);
-      addClass(sourceElement, srcHighlightClass);
+    if (showSiblingReferences) {
+      addReferenceClasses(element, refIdAttr, refIdAttr, refHighlightClass);
     }
+    addReferenceClasses(element, refIdAttr, srcIdAttr, srcHighlightClass);
   }
 
-  function removeClassesForIdAttrs(element, srcIdAttr, refIdAttr, refHighlightClass, srcHighlightClass) {
+  function removeClassesForIdAttrs(element, srcIdAttr, refIdAttr, refHighlightClass, srcHighlightClass, showSiblingReferences) {
     removeReferenceClasses(element, srcIdAttr, refIdAttr, refHighlightClass);
-    removeReferenceClasses(element, refIdAttr, refIdAttr, refHighlightClass);
-    if (element.hasAttribute(refIdAttr)) {
-      let sourceElement = getSourceElement(element, srcIdAttr, refIdAttr);
-      removeClass(sourceElement, srcHighlightClass);
+    if (showSiblingReferences) {
+      removeReferenceClasses(element, refIdAttr, refIdAttr, refHighlightClass);
     }
+    removeReferenceClasses(element, refIdAttr, srcIdAttr, srcHighlightClass);
   }
 
   const sourceIdAttr = "sourceId";
@@ -71,14 +56,14 @@ window.onload = function () {
 
   document.onmouseover = function (event) {
     let element = getEventElement(event);
-    addClassesForIdAttrs(element, sourceIdAttr, referenceIdAttr, referenceHighlightClass, sourceHighlightClass);
-    addClassesForIdAttrs(element, originIdAttr, originReferenceIdAttr, originReferenceHighlightClass, originSourceHighlightClass);
+    addClassesForIdAttrs(element, sourceIdAttr, referenceIdAttr, referenceHighlightClass, sourceHighlightClass, true);
+    addClassesForIdAttrs(element, originIdAttr, originReferenceIdAttr, originReferenceHighlightClass, originSourceHighlightClass, false);
   };
 
   document.onmouseout = function (event) {
     let element = getEventElement(event);
-    removeClassesForIdAttrs(element, sourceIdAttr, referenceIdAttr, referenceHighlightClass, sourceHighlightClass);
-    removeClassesForIdAttrs(element, originIdAttr, originReferenceIdAttr, originReferenceHighlightClass, originSourceHighlightClass);
+    removeClassesForIdAttrs(element, sourceIdAttr, referenceIdAttr, referenceHighlightClass, sourceHighlightClass, true);
+    removeClassesForIdAttrs(element, originIdAttr, originReferenceIdAttr, originReferenceHighlightClass, originSourceHighlightClass, false);
   };
 
 }
