@@ -30,8 +30,8 @@ class Span internal constructor(
 fun span(text: String): Span =
     Span(text)
 
-fun spanKeyword(text: String): Span =
-    Span(text, "keyword")
+fun spanKeyword(text: String, sourceId: String? = null): Span =
+    Span(text, "keyword", sourceId = sourceId)
 
 fun spanArgumentName(text: String): Span =
     Span(text, "argument-name")

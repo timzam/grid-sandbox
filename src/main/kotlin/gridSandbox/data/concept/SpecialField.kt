@@ -5,12 +5,13 @@ import gridSandbox.data.box.flexContainer
 import gridSandbox.data.box.spanKeyword
 
 class SpecialField constructor(
-    private val fieldName: String,
+    override val fieldName: String,
+    override val conceptName: String,
 ) : ConceptField {
 
     override fun getBox(): Box =
         flexContainer(
-            spanKeyword(fieldName),
+            spanKeyword(fieldName, fieldId),
         )
 
 }

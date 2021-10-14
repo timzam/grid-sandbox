@@ -7,6 +7,7 @@ import gridSandbox.data.box.spanContainer
 import gridSandbox.data.box.spanReference
 import gridSandbox.data.box.spanStringText
 import gridSandbox.data.concept.SpecialField
+import gridSandbox.data.concept.fieldCell
 import gridSandbox.data.concept.textCell
 import gridSandbox.data.input.BoxTask
 
@@ -20,19 +21,26 @@ private val citiesRootBox: Box
                 concept(
                     "Country",
                     fields = listOf(
-                        SpecialField("name"),
+                        SpecialField("name", "Country"),
                     ),
                     editorCells = listOf(
                         textCell("country"),
+                        fieldCell("name", "Country"),
+                        textCell("with capital:"),
+                        fieldCell("capital", "Country"),
                     ),
                 ),
                 concept(
                     "City",
                     fields = listOf(
-                        SpecialField("name"),
+                        SpecialField("name", "City"),
                     ),
                     editorCells = listOf(
                         textCell("city"),
+                        fieldCell("name", "City"),
+                        textCell("("),
+                        fieldCell("country", "City"),
+                        textCell(")"),
                     ),
                 ),
             ),
