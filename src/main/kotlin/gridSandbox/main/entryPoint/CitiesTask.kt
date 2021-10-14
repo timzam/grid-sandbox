@@ -23,6 +23,11 @@ private const val CITY_CITY_CELL_ID: String = "CellCityCity"
 private const val OPEN_PAREN_CELL_ID: String = "CellCityOpenParen"
 private const val CLOSE_PAREN_CELL_ID: String = "CellCityCloseParen"
 
+private const val COUNTRY_NAME_FIELD_ID: String = "FieldCountryName"
+private const val CITY_NAME_FIELD_ID: String = "FieldCityName"
+private const val CAPITAL_FIELD_ID: String = "FieldCountryCapital"
+private const val COUNTRY_FIELD_ID: String = "FieldCityCountry"
+
 private val citiesRootBox: Box
     get() =
         flexContainer(
@@ -30,28 +35,28 @@ private val citiesRootBox: Box
                 concept(
                     "Country",
                     fields = listOf(
-                        SpecialField("name", "Country"),
-                        RefField("capital", "Country", "City"),
+                        SpecialField("name", "Country", COUNTRY_NAME_FIELD_ID),
+                        RefField("capital", "Country", "City", CAPITAL_FIELD_ID),
                     ),
                     editorCells = listOf(
                         textCell("country", COUNTRY_COUNTRY_CELL_ID),
-                        fieldCell("name", "Country"),
+                        fieldCell("name", "Country", COUNTRY_NAME_FIELD_ID),
                         textCell("with capital:", WITH_CAPITAL_CELL_ID),
-                        fieldCell("capital", "Country"),
+                        fieldCell("capital", "Country", CAPITAL_FIELD_ID),
                     ),
                 ),
                 concept(
                     "City",
                     fields = listOf(
-                        SpecialField("name", "City"),
-                        RefField("country", "City", "Country"),
+                        SpecialField("name", "City", CITY_NAME_FIELD_ID),
+                        RefField("country", "City", "Country", COUNTRY_FIELD_ID),
                     ),
                     editorCells = listOf(
                         textCell("city", CITY_CITY_CELL_ID),
-                        fieldCell("name", "City"),
+                        fieldCell("name", "City", CITY_NAME_FIELD_ID),
                         spanCell(
                             textCell("(", OPEN_PAREN_CELL_ID),
-                            fieldCell("country", "City"),
+                            fieldCell("country", "City", COUNTRY_FIELD_ID),
                             textCell(")", CLOSE_PAREN_CELL_ID),
                         ),
                     ),
@@ -70,9 +75,9 @@ private val citiesRootBox: Box
 private fun country(countryName: String, capitalName: String): Box =
     flexContainer(
         span("country", COUNTRY_COUNTRY_CELL_ID),
-        spanStringText(countryName, getCountryId(countryName)),
+        spanStringText(countryName, getCountryId(countryName), originReferenceId = COUNTRY_NAME_FIELD_ID),
         span("with capital:", WITH_CAPITAL_CELL_ID),
-        spanReference(capitalName, getCityId(capitalName)),
+        spanReference(capitalName, getCityId(capitalName), CAPITAL_FIELD_ID),
     )
 
 private fun getCountryId(countryName: String): String =
@@ -81,10 +86,10 @@ private fun getCountryId(countryName: String): String =
 private fun city(cityName: String, countryName: String): Box =
     flexContainer(
         span("city", CITY_CITY_CELL_ID),
-        spanStringText(cityName, getCityId(cityName)),
+        spanStringText(cityName, getCityId(cityName), originReferenceId = CITY_NAME_FIELD_ID),
         spanContainer(
             span("(", OPEN_PAREN_CELL_ID),
-            spanReference(countryName, getCountryId(countryName)),
+            spanReference(countryName, getCountryId(countryName), COUNTRY_FIELD_ID),
             span(")", CLOSE_PAREN_CELL_ID),
         ),
     )

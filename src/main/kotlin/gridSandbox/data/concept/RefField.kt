@@ -11,12 +11,13 @@ class RefField constructor(
     override val fieldName: String,
     override val conceptName: String,
     private val refConceptName: String,
+    private val fieldCellId: String,
 ) : ConceptField {
 
     override fun getBox(): Box =
         flexContainer(
             spanContainer(
-                spanStringText(fieldName, fieldId),
+                spanStringText(fieldName, fieldId, fieldCellId),
                 span(":")
             ),
             spanReference(refConceptName, getConceptId(refConceptName)),

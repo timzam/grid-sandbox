@@ -34,14 +34,18 @@ class SpanBox internal constructor(
 fun span(text: String, originReferenceId: String? = null): Span =
     SpanBox(text, originReferenceId = originReferenceId)
 
-fun spanKeyword(text: String, sourceId: String? = null): Span =
-    SpanBox(text, "keyword", sourceId = sourceId)
+fun spanKeyword(text: String, sourceId: String? = null, originId: String? = null): Span =
+    SpanBox(text, "keyword", sourceId = sourceId, originId = originId)
 
 fun spanArgumentName(text: String): Span =
     SpanBox(text, "argument-name")
 
-fun spanStringText(text: String, sourceId: String? = null, originId: String? = null): Span =
-    SpanBox(text, "string-text", sourceId = sourceId, originId = originId)
+fun spanStringText(
+    text: String, sourceId: String? = null, originId: String? = null, originReferenceId: String? = null,
+): Span =
+    SpanBox(
+        text, "string-text", sourceId = sourceId, originId = originId, originReferenceId = originReferenceId,
+    )
 
-fun spanReference(text: String, referenceId: String): Span =
-    SpanBox(text, "reference", referenceId = referenceId)
+fun spanReference(text: String, referenceId: String, originReferenceId: String? = null): Span =
+    SpanBox(text, "reference", referenceId = referenceId, originReferenceId = originReferenceId)

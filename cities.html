@@ -24,10 +24,10 @@
               </div>
               <div class="flex-container">
                 <div class="flex-container with-vpadding with-hpadding level-4">
-                  <span class="keyword" sourceId="idFieldCountryname">name</span>
+                  <span class="keyword" originId="FieldCountryName" sourceId="idFieldCountryname">name</span>
                 </div>
                 <div class="flex-container with-vpadding with-hpadding level-4">
-                  <span><span class="string-text" sourceId="idFieldCountrycapital">capital</span><span>:</span></span><span class="reference" referenceId="idConceptCity">City</span><span>ref</span>
+                  <span><span class="string-text" originId="FieldCountryCapital" sourceId="idFieldCountrycapital">capital</span><span>:</span></span><span class="reference" referenceId="idConceptCity">City</span><span>ref</span>
                 </div>
               </div>
               <div class="flex-container with-vpadding">
@@ -38,13 +38,13 @@
                   <span class="string-text" originId="CellCountryCountry">country</span>
                 </div>
                 <div class="flex-container with-vpadding with-hpadding level-4">
-                  <span class="reference" referenceId="idFieldCountryname">name</span>
+                  <span class="reference" originReferenceId="FieldCountryName" referenceId="idFieldCountryname">name</span>
                 </div>
                 <div class="flex-container with-vpadding with-hpadding level-4">
                   <span class="string-text" originId="CellCountryWithCapital">with capital:</span>
                 </div>
                 <div class="flex-container with-vpadding with-hpadding level-4">
-                  <span class="reference" referenceId="idFieldCountrycapital">capital</span>
+                  <span class="reference" originReferenceId="FieldCountryCapital" referenceId="idFieldCountrycapital">capital</span>
                 </div>
               </div>
             </div>
@@ -59,10 +59,10 @@
               </div>
               <div class="flex-container">
                 <div class="flex-container with-vpadding with-hpadding level-4">
-                  <span class="keyword" sourceId="idFieldCityname">name</span>
+                  <span class="keyword" originId="FieldCityName" sourceId="idFieldCityname">name</span>
                 </div>
                 <div class="flex-container with-vpadding with-hpadding level-4">
-                  <span><span class="string-text" sourceId="idFieldCitycountry">country</span><span>:</span></span><span class="reference" referenceId="idConceptCountry">Country</span><span>ref</span>
+                  <span><span class="string-text" originId="FieldCityCountry" sourceId="idFieldCitycountry">country</span><span>:</span></span><span class="reference" referenceId="idConceptCountry">Country</span><span>ref</span>
                 </div>
               </div>
               <div class="flex-container with-vpadding">
@@ -73,10 +73,10 @@
                   <span class="string-text" originId="CellCityCity">city</span>
                 </div>
                 <div class="flex-container with-vpadding with-hpadding level-4">
-                  <span class="reference" referenceId="idFieldCityname">name</span>
+                  <span class="reference" originReferenceId="FieldCityName" referenceId="idFieldCityname">name</span>
                 </div>
                 <div class="flex-container with-vpadding with-hpadding level-4">
-                  <span><span class="string-text" originId="CellCityOpenParen">(</span><span class="reference" referenceId="idFieldCitycountry">country</span><span class="string-text" originId="CellCityCloseParen">)</span></span>
+                  <span><span class="string-text" originId="CellCityOpenParen">(</span><span class="reference" originReferenceId="FieldCityCountry" referenceId="idFieldCitycountry">country</span><span class="string-text" originId="CellCityCloseParen">)</span></span>
                 </div>
               </div>
             </div>
@@ -89,22 +89,22 @@
         </div>
         <div class="flex-container">
           <div class="flex-container with-vpadding with-hpadding level-3">
-            <span originReferenceId="CellCountryCountry">country</span><span class="string-text" sourceId="idCountryItaly">Italy</span><span originReferenceId="CellCountryWithCapital">with capital:</span><span class="reference" referenceId="idCityRome">Rome</span>
+            <span originReferenceId="CellCountryCountry">country</span><span class="string-text" originReferenceId="FieldCountryName" sourceId="idCountryItaly">Italy</span><span originReferenceId="CellCountryWithCapital">with capital:</span><span class="reference" originReferenceId="FieldCountryCapital" referenceId="idCityRome">Rome</span>
           </div>
           <div class="flex-container with-vpadding with-hpadding level-3">
-            <span originReferenceId="CellCountryCountry">country</span><span class="string-text" sourceId="idCountryGermany">Germany</span><span originReferenceId="CellCountryWithCapital">with capital:</span><span class="reference" referenceId="idCityBerlin">Berlin</span>
+            <span originReferenceId="CellCountryCountry">country</span><span class="string-text" originReferenceId="FieldCountryName" sourceId="idCountryGermany">Germany</span><span originReferenceId="CellCountryWithCapital">with capital:</span><span class="reference" originReferenceId="FieldCountryCapital" referenceId="idCityBerlin">Berlin</span>
           </div>
           <div class="flex-container with-vpadding with-hpadding level-3">
-            <span originReferenceId="CellCityCity">city</span><span class="string-text" sourceId="idCityRome">Rome</span><span><span originReferenceId="CellCityOpenParen">(</span><span class="reference" referenceId="idCountryItaly">Italy</span><span originReferenceId="CellCityCloseParen">)</span></span>
+            <span originReferenceId="CellCityCity">city</span><span class="string-text" originReferenceId="FieldCityName" sourceId="idCityRome">Rome</span><span><span originReferenceId="CellCityOpenParen">(</span><span class="reference" originReferenceId="FieldCityCountry" referenceId="idCountryItaly">Italy</span><span originReferenceId="CellCityCloseParen">)</span></span>
           </div>
           <div class="flex-container with-vpadding with-hpadding level-3">
-            <span originReferenceId="CellCityCity">city</span><span class="string-text" sourceId="idCityMilan">Milan</span><span><span originReferenceId="CellCityOpenParen">(</span><span class="reference" referenceId="idCountryItaly">Italy</span><span originReferenceId="CellCityCloseParen">)</span></span>
+            <span originReferenceId="CellCityCity">city</span><span class="string-text" originReferenceId="FieldCityName" sourceId="idCityMilan">Milan</span><span><span originReferenceId="CellCityOpenParen">(</span><span class="reference" originReferenceId="FieldCityCountry" referenceId="idCountryItaly">Italy</span><span originReferenceId="CellCityCloseParen">)</span></span>
           </div>
           <div class="flex-container with-vpadding with-hpadding level-3">
-            <span originReferenceId="CellCityCity">city</span><span class="string-text" sourceId="idCityBerlin">Berlin</span><span><span originReferenceId="CellCityOpenParen">(</span><span class="reference" referenceId="idCountryGermany">Germany</span><span originReferenceId="CellCityCloseParen">)</span></span>
+            <span originReferenceId="CellCityCity">city</span><span class="string-text" originReferenceId="FieldCityName" sourceId="idCityBerlin">Berlin</span><span><span originReferenceId="CellCityOpenParen">(</span><span class="reference" originReferenceId="FieldCityCountry" referenceId="idCountryGermany">Germany</span><span originReferenceId="CellCityCloseParen">)</span></span>
           </div>
           <div class="flex-container with-vpadding with-hpadding level-3">
-            <span originReferenceId="CellCityCity">city</span><span class="string-text" sourceId="idCityMunich">Munich</span><span><span originReferenceId="CellCityOpenParen">(</span><span class="reference" referenceId="idCountryGermany">Germany</span><span originReferenceId="CellCityCloseParen">)</span></span>
+            <span originReferenceId="CellCityCity">city</span><span class="string-text" originReferenceId="FieldCityName" sourceId="idCityMunich">Munich</span><span><span originReferenceId="CellCityOpenParen">(</span><span class="reference" originReferenceId="FieldCityCountry" referenceId="idCountryGermany">Germany</span><span originReferenceId="CellCityCloseParen">)</span></span>
           </div>
         </div>
       </div>

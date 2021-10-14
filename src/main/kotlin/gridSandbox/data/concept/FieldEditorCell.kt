@@ -6,15 +6,16 @@ import gridSandbox.data.box.spanReference
 class FieldEditorCell internal constructor(
     private val fieldName: String,
     private val conceptName: String,
+    private val fieldCellId: String,
 ) : EditorCell {
 
     override fun getSpan(): Span =
-        spanReference(fieldName, fieldId)
+        spanReference(fieldName, fieldId, fieldCellId)
 
     private val fieldId: String
         get() = getFieldId(fieldName, conceptName)
 
 }
 
-fun fieldCell(fieldName: String, conceptName: String): EditorCell =
-    FieldEditorCell(fieldName, conceptName)
+fun fieldCell(fieldName: String, conceptName: String, fieldCellId: String): EditorCell =
+    FieldEditorCell(fieldName, conceptName, fieldCellId)
