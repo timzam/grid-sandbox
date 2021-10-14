@@ -33,6 +33,9 @@ fun span(text: String): Span =
 fun spanKeyword(text: String): Span =
     Span(text, "keyword")
 
+fun spanArgumentName(text: String): Span =
+    Span(text, "argument-name")
+
 fun spanStringText(text: String, sourceId: String): Span =
     Span(text, "string-text", sourceId = sourceId)
 

@@ -28,6 +28,13 @@ body {
   flex-direction: column;
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 0.6em;
+  row-gap: 0.4em;
+}
+
 .with-vpadding {
   padding-top: 0.3em;
   padding-bottom: 0.3em;
@@ -53,6 +60,10 @@ body {
 .keyword {
   color: #CC7832;
   font-weight: bold;
+}
+
+.argument-name {
+  color: #467CDA;
 }
 
 .string-text {

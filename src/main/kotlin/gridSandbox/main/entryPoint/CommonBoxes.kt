@@ -1,9 +1,11 @@
 package gridSandbox.main.entryPoint
 
 import gridSandbox.data.box.Box
+import gridSandbox.data.box.gridContainer
 import gridSandbox.data.box.simpleFlexContainer
 import gridSandbox.data.box.simpleHorizontalFlexContainer
 import gridSandbox.data.box.span
+import gridSandbox.data.box.spanArgumentName
 import gridSandbox.data.box.spanKeyword
 import gridSandbox.data.box.spanStringText
 import gridSandbox.data.box.verticalFlexContainer
@@ -29,6 +31,12 @@ internal fun concept(conceptName: String): Box =
         simpleFlexContainer(
             spanKeyword("concept"),
             spanStringText(conceptName, getConceptId(conceptName)),
+        ),
+        gridContainer(
+            spanArgumentName("fields"),
+            simpleFlexContainer(),
+            spanArgumentName("editor"),
+            simpleFlexContainer(),
         ),
     )
 
