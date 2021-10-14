@@ -11,6 +11,8 @@ import gridSandbox.data.box.spanKeyword
 import gridSandbox.data.box.spanStringText
 import gridSandbox.data.box.verticalFlexContainer
 import gridSandbox.data.concept.ConceptField
+import gridSandbox.data.concept.EditorCell
+import gridSandbox.data.concept.InterfaceElement
 
 internal fun displaySchemaElements(vararg boxes: Box): Box =
     verticalFlexContainer(
@@ -28,7 +30,7 @@ internal fun displayAllInstances(vararg boxes: Box): Box =
         simpleFlexContainer(*boxes),
     )
 
-internal fun concept(conceptName: String, fields: List<ConceptField>): Box =
+internal fun concept(conceptName: String, fields: List<ConceptField>, editorCells: List<EditorCell>): Box =
     verticalFlexContainer(
         simpleFlexContainer(
             spanKeyword("concept"),
@@ -38,20 +40,18 @@ internal fun concept(conceptName: String, fields: List<ConceptField>): Box =
             simpleFlexContainerWithVShift(
                 spanArgumentName("fields"),
             ),
-            fieldsBox(fields),
+            elementsBox(fields),
             simpleFlexContainerWithVShift(
                 spanArgumentName("editor"),
             ),
-            simpleFlexContainer(
-
-            ),
+            elementsBox(editorCells),
         ),
     )
 
 private fun getConceptId(conceptName: String): String =
     "idConcept$conceptName"
 
-private fun fieldsBox(fields: List<ConceptField>): Box {
-    val boxes = fields.map { field -> field.getBox() }
+private fun elementsBox(elements: List<InterfaceElement>): Box {
+    val boxes = elements.map { field -> field.getBox() }
     return simpleFlexContainer(*boxes.toTypedArray())
 }

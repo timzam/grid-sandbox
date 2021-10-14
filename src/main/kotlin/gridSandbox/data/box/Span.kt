@@ -7,8 +7,8 @@ import kotlinx.html.span
 class Span internal constructor(
     private val text: String,
     private val spanClass: String? = null,
-    private val sourceId: String = "",
-    private val referenceId: String = "",
+    private val sourceId: String? = null,
+    private val referenceId: String? = null,
 ) : Box {
 
     override fun getBlock(currentLevel: Int): FlowContent.() -> Unit = {
@@ -19,8 +19,8 @@ class Span internal constructor(
         }
     }
 
-    private fun SPAN.setAttribute(attrName: String, attrValue: String) {
-        if (attrValue.isNotEmpty()) {
+    private fun SPAN.setAttribute(attrName: String, attrValue: String?) {
+        if (attrValue != null) {
             attributes[attrName] = attrValue
         }
     }
@@ -36,7 +36,7 @@ fun spanKeyword(text: String): Span =
 fun spanArgumentName(text: String): Span =
     Span(text, "argument-name")
 
-fun spanStringText(text: String, sourceId: String): Span =
+fun spanStringText(text: String, sourceId: String? = null): Span =
     Span(text, "string-text", sourceId = sourceId)
 
 fun spanReference(text: String, referenceId: String): Span =
