@@ -39,6 +39,7 @@ kotlin {
                 languageVersion = "1.5"
                 apiVersion = "1.5"
                 progressiveMode = true
+                optIn("kotlin.RequiresOptIn")
             }
         }
         main {

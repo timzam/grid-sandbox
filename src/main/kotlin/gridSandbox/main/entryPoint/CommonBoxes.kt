@@ -49,7 +49,7 @@ internal fun concept(conceptName: String, fields: List<ConceptField>, editorCell
         ),
     )
 
-private fun elementsBox(elements: List<InterfaceElement>): Box {
+internal fun elementsBox(elements: List<InterfaceElement>): Box {
     val boxes = elements.map { field -> field.getBox() }
     return simpleFlexContainer(*boxes.toTypedArray())
 }
