@@ -12,7 +12,6 @@ import gridSandbox.data.box.spanContainer
 import gridSandbox.data.box.spanReference
 import gridSandbox.data.box.spanStringText
 import gridSandbox.data.box.verticalFlexContainer
-import gridSandbox.data.concept.ConceptField
 import gridSandbox.data.concept.EditorCell
 import gridSandbox.data.concept.RefField
 import gridSandbox.data.concept.SpecialField
@@ -20,8 +19,9 @@ import gridSandbox.data.concept.fieldCell
 import gridSandbox.data.concept.getConceptId
 import gridSandbox.data.concept.textCell
 import gridSandbox.data.input.BoxTask
+import gridSandbox.main.entryPoint.kBase.Member
 
-internal val kBaseTask: BoxTask
+val kBaseTask: BoxTask
     get() = BoxTask("kbase.html", "kBase", kBaseRootBox)
 
 private const val NOTION_DEF_NAME_FIELD_ID: String = "FieldNotionDefName"
@@ -92,15 +92,18 @@ private val kBaseRootBox: Box
                     ),
                 ),
                 predicate(
-                    "Gave Birth",
+                    "GaveBirth",
                     members = listOf(
+                        Member("GaveBirth", "who", "Person", GAVE_BIRTH_WHO_MEMBER_ID),
+                        Member("GaveBirth", "toWhom", "Person", GAVE_BIRTH_TO_WHOM_MEMBER_ID),
+                        Member("GaveBirth", "father", "Person", GAVE_BIRTH_FATHER_MEMBER_ID),
                     ),
                     editorCells = listOf(
-                        fieldCell("who", "Gave Birth", GAVE_BIRTH_WHO_MEMBER_ID),
+                        fieldCell("who", "GaveBirth", GAVE_BIRTH_WHO_MEMBER_ID),
                         textCell("${BLANK}gave birth to$BLANK", GAVE_BIRTH_GAVE_BIRTH_CELL_ID),
-                        fieldCell("toWhom", "Gave Birth", GAVE_BIRTH_TO_WHOM_MEMBER_ID),
+                        fieldCell("toWhom", "GaveBirth", GAVE_BIRTH_TO_WHOM_MEMBER_ID),
                         textCell("${BLANK}(father is$BLANK", GAVE_BIRTH_FATHER_CELL_ID),
-                        fieldCell("father", "Gave Birth", GAVE_BIRTH_FATHER_MEMBER_ID),
+                        fieldCell("father", "GaveBirth", GAVE_BIRTH_FATHER_MEMBER_ID),
                         textCell(")", GAVE_BIRTH_CLOSE_PAREN_CELL_ID),
                     ),
                 ),
@@ -237,7 +240,7 @@ private val kBaseRootBox: Box
             ),
         )
 
-private fun predicate(conceptName: String, members: List<ConceptField>, editorCells: List<EditorCell>): Box =
+private fun predicate(conceptName: String, members: List<Member>, editorCells: List<EditorCell>): Box =
     verticalFlexContainer(
         simpleFlexContainer(
             span("Predicate:"),
@@ -279,7 +282,7 @@ private fun notionDef(notionDefName: String, extends: String? = null): Box {
     )
 }
 
-private fun getNotionDefId(notionDefName: String): String =
+internal fun getNotionDefId(notionDefName: String): String =
     "idNotionDef$notionDefName"
 
 /*
