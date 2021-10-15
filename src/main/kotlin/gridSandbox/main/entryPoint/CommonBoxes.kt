@@ -49,6 +49,27 @@ internal fun concept(conceptName: String, fields: List<ConceptField>, editorCell
         ),
     )
 
+internal fun metaConcept(conceptName: String, fields: List<ConceptField>, editorCells: List<EditorCell>): Box =
+    verticalFlexContainer(
+        simpleFlexContainer(
+            spanKeyword("meta concept"),
+            spanStringText(conceptName, getConceptId(conceptName)),
+        ),
+        gridContainer(
+            simpleFlexContainerWithVShift(
+                spanArgumentName("fields"),
+            ),
+            elementsBox(fields),
+            simpleFlexContainerWithVShift(
+                spanArgumentName("editor"),
+            ),
+            elementsBox(editorCells),
+            simpleFlexContainerWithVShift(
+                spanArgumentName("inner concepts"),
+            ),
+        ),
+    )
+
 internal fun elementsBox(elements: List<InterfaceElement>): Box {
     val boxes = elements.map { field -> field.getBox() }
     return simpleFlexContainer(*boxes.toTypedArray())
