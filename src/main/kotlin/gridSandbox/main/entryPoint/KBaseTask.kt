@@ -43,6 +43,11 @@ private const val GAVE_BIRTH_GAVE_BIRTH_CELL_ID: String = "CellGaveBirthGaveBirt
 private const val GAVE_BIRTH_FATHER_CELL_ID: String = "CellGaveBirthFather"
 private const val GAVE_BIRTH_CLOSE_PAREN_CELL_ID: String = "CellGaveBirthCloseParen"
 
+private const val PERSONIFIES_WHO_MEMBER_ID: String = "MemberPersonifiesWho"
+private const val PERSONIFIES_WHAT_MEMBER_ID: String = "MemberPersonifiesWhat"
+
+private const val PERSONIFIES_PERSONIFIES_CELL_ID: String = "CellPersonifiesPersonifies"
+
 private const val BLANK: Char = '\u23B5'
 
 private val kBaseRootBox: Box
@@ -104,6 +109,9 @@ private val kBaseRootBox: Box
                     members = listOf(
                     ),
                     editorCells = listOf(
+                        fieldCell("who", "Personifies", PERSONIFIES_WHO_MEMBER_ID),
+                        textCell("${BLANK}personfies$BLANK", PERSONIFIES_PERSONIFIES_CELL_ID),
+                        fieldCell("what", "Personifies", PERSONIFIES_WHAT_MEMBER_ID),
                     ),
                 ),
                 predicate(
@@ -216,6 +224,16 @@ private val kBaseRootBox: Box
                 gaveBirth("Gaia", "Cottus", "Uranus"),
                 gaveBirth("Gaia", "Gyges", "Uranus"),
                 gaveBirth("Gaia", "Aegaeon", "Uranus"),
+                personifies("Erebus", "Darkness"),
+                personifies("Nyx", "Night"),
+                personifies("Aether", "Light"),
+                personifies("Hemera", "Day"),
+                personifies("Thalassa", "Sea"),
+                personifies("Gaia", "Earth"),
+                personifies("Tartarus", "Depth"),
+                personifies("Tartarus", "Caves"),
+                personifies("Pontus", "Sea"),
+                personifies("Pontus", "Sky"),
             ),
         )
 
@@ -301,4 +319,11 @@ private fun gaveBirth(who: String, toWhom: String, father: String): Box =
             notionInstanceRef(father, GAVE_BIRTH_FATHER_MEMBER_ID),
             span(")", GAVE_BIRTH_CLOSE_PAREN_CELL_ID),
         ),
+    )
+
+private fun personifies(who: String, what: String): Box =
+    flexContainer(
+        notionInstanceRef(who, PERSONIFIES_WHO_MEMBER_ID),
+        span("personifies", PERSONIFIES_PERSONIFIES_CELL_ID),
+        notionInstanceRef(what, PERSONIFIES_WHAT_MEMBER_ID),
     )
