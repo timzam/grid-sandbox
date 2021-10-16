@@ -61,6 +61,11 @@ private const val HATED_WHOM_MEMBER_ID: String = "MemberHatedWhom"
 
 private const val HATED_HATED_CELL_ID: String = "CellHatedHated"
 
+private const val PLANNED_WHO_MEMBER_ID: String = "MemberPlannedWho"
+private const val PLANNED_WHAT_MEMBER_ID: String = "MemberPlannedWhat"
+
+private const val PLANNED_PLANNED_CELL_ID: String = "CellPlannedPlanned"
+
 private const val BLANK: Char = '\u23B5'
 
 private val kBaseRootBox: Box
@@ -159,8 +164,13 @@ private val kBaseRootBox: Box
                 predicate(
                     "Planned",
                     members = listOf(
+                        Member("Planned", "who", "Person", PLANNED_WHO_MEMBER_ID),
+                        Member("Planned", "what", "Person", PLANNED_WHAT_MEMBER_ID),
                     ),
                     editorCells = listOf(
+                        fieldCell("who", "Planned", PLANNED_WHO_MEMBER_ID),
+                        textCell("${BLANK}planned$BLANK", PLANNED_PLANNED_CELL_ID),
+                        fieldCell("what", "Planned", PLANNED_WHAT_MEMBER_ID),
                     ),
                 ),
                 predicate(
@@ -269,6 +279,7 @@ private val kBaseRootBox: Box
                 pushedInto("Uranus", "Gyges", "Gaia"),
                 pushedInto("Uranus", "Aegaeon", "Gaia"),
                 hated("Gaia", "Uranus"),
+                planned("Gaia", "Revenge"),
             ),
         )
 
@@ -369,4 +380,11 @@ private fun hated(who: String, whom: String): Box =
         notionInstanceRef(who, HATED_WHO_MEMBER_ID),
         span("hated", HATED_HATED_CELL_ID),
         notionInstanceRef(whom, HATED_WHOM_MEMBER_ID),
+    )
+
+private fun planned(who: String, what: String): Box =
+    flexContainer(
+        notionInstanceRef(who, PLANNED_WHO_MEMBER_ID),
+        span("planned", PLANNED_PLANNED_CELL_ID),
+        notionInstanceRef(what, PLANNED_WHAT_MEMBER_ID),
     )
