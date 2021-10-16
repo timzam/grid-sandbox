@@ -49,6 +49,13 @@ private const val PERSONIFIES_WHAT_MEMBER_ID: String = "MemberPersonifiesWhat"
 
 private const val PERSONIFIES_PERSONIFIES_CELL_ID: String = "CellPersonifiesPersonifies"
 
+private const val PUSH_INTO_WHO_MEMBER_ID: String = "MemberPushIntoWho"
+private const val PUSH_INTO_WHAT_MEMBER_ID: String = "MemberPushIntoWhat"
+private const val PUSH_INTO_INTO_WHAT_MEMBER_ID: String = "MemberPushIntoIntoWhat"
+
+private const val PUSH_INTO_PUSHED_CELL_ID: String = "CellPushIntoPushed"
+private const val PUSH_INTO_INTO_CELL_ID: String = "CellPushIntoInto"
+
 private const val BLANK: Char = '\u23B5'
 
 private val kBaseRootBox: Box
@@ -108,6 +115,8 @@ private val kBaseRootBox: Box
                 predicate(
                     "Personifies",
                     members = listOf(
+                        Member("Personifies", "who", "Person", PERSONIFIES_WHO_MEMBER_ID),
+                        Member("Personifies", "what", "Something", PERSONIFIES_WHAT_MEMBER_ID),
                     ),
                     editorCells = listOf(
                         fieldCell("who", "Personifies", PERSONIFIES_WHO_MEMBER_ID),
@@ -118,8 +127,16 @@ private val kBaseRootBox: Box
                 predicate(
                     "PushInto",
                     members = listOf(
+                        Member("PushInto", "who", "Person", PUSH_INTO_WHO_MEMBER_ID),
+                        Member("PushInto", "what", "SpaceObject", PUSH_INTO_WHAT_MEMBER_ID),
+                        Member("PushInto", "intoWhat", "SpaceObject", PUSH_INTO_INTO_WHAT_MEMBER_ID),
                     ),
                     editorCells = listOf(
+                        fieldCell("who", "PushInto", PUSH_INTO_WHO_MEMBER_ID),
+                        textCell("${BLANK}pushed$BLANK", PUSH_INTO_PUSHED_CELL_ID),
+                        fieldCell("what", "PushInto", PUSH_INTO_WHAT_MEMBER_ID),
+                        textCell("${BLANK}into$BLANK", PUSH_INTO_INTO_CELL_ID),
+                        fieldCell("intoWhat", "PushInto", PUSH_INTO_INTO_WHAT_MEMBER_ID),
                     ),
                 ),
                 predicate(
@@ -235,6 +252,12 @@ private val kBaseRootBox: Box
                 personifies("Tartarus", "Caves"),
                 personifies("Pontus", "Sea"),
                 personifies("Pontus", "Sky"),
+                pushedInto("Uranus", "Brontes", "Gaia"),
+                pushedInto("Uranus", "Steropes", "Gaia"),
+                pushedInto("Uranus", "Arges", "Gaia"),
+                pushedInto("Uranus", "Cottus", "Gaia"),
+                pushedInto("Uranus", "Gyges", "Gaia"),
+                pushedInto("Uranus", "Aegaeon", "Gaia"),
             ),
         )
 
@@ -319,4 +342,13 @@ private fun personifies(who: String, what: String): Box =
         notionInstanceRef(who, PERSONIFIES_WHO_MEMBER_ID),
         span("personifies", PERSONIFIES_PERSONIFIES_CELL_ID),
         notionInstanceRef(what, PERSONIFIES_WHAT_MEMBER_ID),
+    )
+
+private fun pushedInto(who: String, what: String, intoWhat: String): Box =
+    flexContainer(
+        notionInstanceRef(who, PUSH_INTO_WHO_MEMBER_ID),
+        span("pushed", PUSH_INTO_PUSHED_CELL_ID),
+        notionInstanceRef(what, PUSH_INTO_WHAT_MEMBER_ID),
+        span("into", PUSH_INTO_INTO_CELL_ID),
+        notionInstanceRef(intoWhat, PUSH_INTO_INTO_WHAT_MEMBER_ID),
     )
