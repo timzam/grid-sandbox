@@ -17,6 +17,7 @@ import gridSandbox.data.concept.RefField
 import gridSandbox.data.concept.SpecialField
 import gridSandbox.data.concept.fieldCell
 import gridSandbox.data.concept.getConceptId
+import gridSandbox.data.concept.ifPresentCell
 import gridSandbox.data.concept.textCell
 import gridSandbox.data.input.BoxTask
 import gridSandbox.main.entryPoint.kBase.Member
@@ -63,13 +64,10 @@ private val kBaseRootBox: Box
                     editorCells = listOf(
                         textCell(">>>$BLANK", NOTION_DEF_PREFIX_CELL_ID),
                         fieldCell("name", "NotionDef", NOTION_DEF_NAME_FIELD_ID),
-                        /*
                         ifPresentCell(
-                            "extends",
+                            textCell(":$BLANK", EXTENDS_COLON_CELL_ID),
+                            fieldCell("extends", "NotionDef", EXTENDS_FIELD_ID),
                         ),
-                        */
-                        textCell(":$BLANK", EXTENDS_COLON_CELL_ID),
-                        fieldCell("extends", "NotionDef", EXTENDS_FIELD_ID),
                     ),
                 ),
                 concept(
@@ -284,14 +282,6 @@ private fun notionDef(notionDefName: String, extends: String? = null): Box {
 
 internal fun getNotionDefId(notionDefName: String): String =
     "idNotionDef$notionDefName"
-
-/*
-private fun ifPresentCell(fieldId: String, vararg cells: EditorCell): EditorCell {
-    return flexContainer(
-
-    )
-}
-*/
 
 private fun notionInstance(notionInstanceName: String, vararg notionDefNames: String): Box {
     val notionDefName = notionDefNames.first()
