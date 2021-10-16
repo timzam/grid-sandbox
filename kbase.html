@@ -264,7 +264,7 @@
                   <span><span class="string-text" originId="MemberPlannedWho" sourceId="idFieldPlannedwho">who</span><span>:</span></span><span class="reference" referenceId="idNotionDefPerson">Person</span>
                 </div>
                 <div class="flex-container with-vpadding with-hpadding level-4">
-                  <span><span class="string-text" originId="MemberPlannedWhat" sourceId="idFieldPlannedwhat">what</span><span>:</span></span><span class="reference" referenceId="idNotionDefPerson">Person</span>
+                  <span><span class="string-text" originId="MemberPlannedWhat" sourceId="idFieldPlannedwhat">what</span><span>:</span></span><span class="reference" referenceId="idNotionDefAction">Action</span>
                 </div>
               </div>
               <div class="flex-container with-vpadding">
@@ -291,11 +291,28 @@
               <div class="flex-container with-vpadding">
                 <span class="argument-name">members</span>
               </div>
-              <div class="flex-container"></div>
+              <div class="flex-container">
+                <div class="flex-container with-vpadding with-hpadding level-4">
+                  <span><span class="string-text" originId="MemberVisitedWho" sourceId="idFieldVisitedwho">who</span><span>:</span></span><span class="reference" referenceId="idNotionDefPerson">Person</span>
+                </div>
+                <div class="flex-container with-vpadding with-hpadding level-4">
+                  <span><span class="string-text" originId="MemberVisitedWhat" sourceId="idFieldVisitedwhat">what</span><span>:</span></span><span class="reference" referenceId="idNotionDefPlace">Place</span>
+                </div>
+              </div>
               <div class="flex-container with-vpadding">
                 <span class="argument-name">editor</span>
               </div>
-              <div class="flex-container"></div>
+              <div class="flex-container">
+                <div class="flex-container with-vpadding with-hpadding level-4">
+                  <span class="reference" originId="MemberVisitedWho" referenceId="idFieldVisitedwho">who</span>
+                </div>
+                <div class="flex-container with-vpadding with-hpadding level-4">
+                  <span class="string-text" originId="CellVisitedVisited">⎵visited⎵</span>
+                </div>
+                <div class="flex-container with-vpadding with-hpadding level-4">
+                  <span class="reference" originId="MemberVisitedWhat" referenceId="idFieldVisitedwhat">what</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -598,6 +615,9 @@
           </div>
           <div class="flex-container with-vpadding with-hpadding level-3">
             <span class="reference" originReferenceId="MemberPlannedWho" referenceId="idNotionInstanceGaia">Gaia</span><span originReferenceId="CellPlannedPlanned">planned</span><span class="reference" originReferenceId="MemberPlannedWhat" referenceId="idNotionInstanceRevenge">Revenge</span>
+          </div>
+          <div class="flex-container with-vpadding with-hpadding level-3">
+            <span class="reference" originReferenceId="MemberVisitedWho" referenceId="idNotionInstanceGaia">Gaia</span><span originReferenceId="CellVisitedVisited">visited</span><span class="reference" originReferenceId="MemberVisitedWho" referenceId="idNotionInstanceOthrys">Othrys</span>
           </div>
         </div>
       </div>

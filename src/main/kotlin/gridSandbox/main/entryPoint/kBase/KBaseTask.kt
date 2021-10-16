@@ -66,6 +66,11 @@ private const val PLANNED_WHAT_MEMBER_ID: String = "MemberPlannedWhat"
 
 private const val PLANNED_PLANNED_CELL_ID: String = "CellPlannedPlanned"
 
+private const val VISITED_WHO_MEMBER_ID: String = "MemberVisitedWho"
+private const val VISITED_WHAT_MEMBER_ID: String = "MemberVisitedWhat"
+
+private const val VISITED_VISITED_CELL_ID: String = "CellVisitedVisited"
+
 private const val BLANK: Char = '\u23B5'
 
 private val kBaseRootBox: Box
@@ -165,7 +170,7 @@ private val kBaseRootBox: Box
                     "Planned",
                     members = listOf(
                         Member("Planned", "who", "Person", PLANNED_WHO_MEMBER_ID),
-                        Member("Planned", "what", "Person", PLANNED_WHAT_MEMBER_ID),
+                        Member("Planned", "what", "Action", PLANNED_WHAT_MEMBER_ID),
                     ),
                     editorCells = listOf(
                         fieldCell("who", "Planned", PLANNED_WHO_MEMBER_ID),
@@ -176,8 +181,13 @@ private val kBaseRootBox: Box
                 predicate(
                     "Visited",
                     members = listOf(
+                        Member("Visited", "who", "Person", VISITED_WHO_MEMBER_ID),
+                        Member("Visited", "what", "Place", VISITED_WHAT_MEMBER_ID),
                     ),
                     editorCells = listOf(
+                        fieldCell("who", "Visited", VISITED_WHO_MEMBER_ID),
+                        textCell("${BLANK}visited$BLANK", VISITED_VISITED_CELL_ID),
+                        fieldCell("what", "Visited", VISITED_WHAT_MEMBER_ID),
                     ),
                 ),
             ),
@@ -280,6 +290,7 @@ private val kBaseRootBox: Box
                 pushedInto("Uranus", "Aegaeon", "Gaia"),
                 hated("Gaia", "Uranus"),
                 planned("Gaia", "Revenge"),
+                visited("Gaia", "Othrys"),
             ),
         )
 
@@ -387,4 +398,11 @@ private fun planned(who: String, what: String): Box =
         notionInstanceRef(who, PLANNED_WHO_MEMBER_ID),
         span("planned", PLANNED_PLANNED_CELL_ID),
         notionInstanceRef(what, PLANNED_WHAT_MEMBER_ID),
+    )
+
+private fun visited(who: String, what: String): Box =
+    flexContainer(
+        notionInstanceRef(who, VISITED_WHO_MEMBER_ID),
+        span("visited", VISITED_VISITED_CELL_ID),
+        notionInstanceRef(what, VISITED_WHO_MEMBER_ID),
     )
