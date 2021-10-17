@@ -72,6 +72,8 @@ private const val VISITED_WHAT_MEMBER_ID: String = "MemberVisitedWhat"
 private const val VISITED_VISITED_CELL_ID: String = "CellVisitedVisited"
 
 private const val EVENT_DEF_NAME_FIELD_ID: String = "FieldEventDefName"
+private const val EVENT_DEF_EDITOR_FIELD_ID: String = "FieldEventDefEditor"
+private const val EVENT_DEF_MEMBERS_FIELD_ID: String = "FieldEventDefMembers"
 
 internal const val EVENT_MEMBER_DEF_NAME_FIELD_ID: String = "FieldEventMemberDefName"
 internal const val EVENT_MEMBER_NOTION_DEF_FIELD_ID: String = "FieldEventMemberNotionDef"
@@ -115,6 +117,8 @@ private val kBaseRootBox: Box
                     "EventDef",
                     fields = listOf(
                         SpecialField("name", "EventDef", EVENT_DEF_NAME_FIELD_ID),
+                        SpecialField("editor", "EventDef", EVENT_DEF_EDITOR_FIELD_ID),
+                        RefField("members", "EventDef", "EventMemberDef", EVENT_DEF_MEMBERS_FIELD_ID, "components"),
                     ),
                     editorCells = listOf(
                     ),

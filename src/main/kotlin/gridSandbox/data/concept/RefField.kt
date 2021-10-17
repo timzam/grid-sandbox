@@ -12,6 +12,7 @@ class RefField constructor(
     override val conceptName: String,
     private val refConceptName: String,
     private val fieldCellId: String,
+    private val refFieldKind: String = "ref",
 ) : ConceptField {
 
     override fun getBox(): Box =
@@ -21,7 +22,7 @@ class RefField constructor(
                 span(":")
             ),
             spanReference(refConceptName, getConceptId(refConceptName)),
-            span("ref")
+            span(refFieldKind)
         )
 
 }
