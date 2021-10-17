@@ -49,7 +49,9 @@ internal fun concept(conceptName: String, fields: List<ConceptField>, editorCell
         ),
     )
 
-internal fun metaConcept(conceptName: String, fields: List<ConceptField>, editorCells: List<EditorCell>): Box =
+internal fun metaConcept(
+    conceptName: String, fields: List<ConceptField>, editorCells: List<EditorCell>, conceptBoxes: List<Box>,
+): Box =
     verticalFlexContainer(
         simpleFlexContainer(
             spanKeyword("meta concept"),
@@ -67,6 +69,7 @@ internal fun metaConcept(conceptName: String, fields: List<ConceptField>, editor
             simpleFlexContainerWithVShift(
                 spanArgumentName("inner concepts"),
             ),
+            *conceptBoxes.toTypedArray(),
         ),
     )
 

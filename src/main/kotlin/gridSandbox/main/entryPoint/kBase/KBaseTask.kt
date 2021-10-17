@@ -73,6 +73,11 @@ private const val VISITED_VISITED_CELL_ID: String = "CellVisitedVisited"
 
 private const val EVENT_DEF_NAME_FIELD_ID: String = "FieldEventDefName"
 
+internal const val EVENT_MEMBER_DEF_NAME_FIELD_ID: String = "FieldEventMemberDefName"
+internal const val EVENT_MEMBER_NOTION_DEF_FIELD_ID: String = "FieldEventMemberNotionDef"
+
+internal const val EVENT_MEMBER_COLON_CELL_ID: String = "CellEventMemberColon"
+
 private const val BLANK: Char = '\u23B5'
 
 private val kBaseRootBox: Box
@@ -112,6 +117,20 @@ private val kBaseRootBox: Box
                         SpecialField("name", "EventDef", EVENT_DEF_NAME_FIELD_ID),
                     ),
                     editorCells = listOf(
+                    ),
+                    conceptBoxes = listOf(
+                        concept(
+                            "EventMemberDef",
+                            fields = listOf(
+                                SpecialField("name", "EventMemberDef", EVENT_MEMBER_DEF_NAME_FIELD_ID),
+                                RefField("notionDef", "EventMemberDef", "NotionDef", EVENT_MEMBER_NOTION_DEF_FIELD_ID),
+                            ),
+                            editorCells = listOf(
+                                fieldCell("name", "EventMemberDef", EVENT_MEMBER_DEF_NAME_FIELD_ID),
+                                textCell(":$BLANK", EVENT_MEMBER_COLON_CELL_ID),
+                                fieldCell("notionDef", "EventMemberDef", EVENT_MEMBER_NOTION_DEF_FIELD_ID),
+                            ),
+                        ),
                     ),
                 ),
                 predicate(
