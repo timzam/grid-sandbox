@@ -71,6 +71,8 @@ private const val VISITED_WHAT_MEMBER_ID: String = "MemberVisitedWhat"
 
 private const val VISITED_VISITED_CELL_ID: String = "CellVisitedVisited"
 
+private const val EVENT_DEF_NAME_FIELD_ID: String = "FieldEventDefName"
+
 private const val BLANK: Char = '\u23B5'
 
 private val kBaseRootBox: Box
@@ -107,6 +109,7 @@ private val kBaseRootBox: Box
                 metaConcept(
                     "EventDef",
                     fields = listOf(
+                        SpecialField("name", "EventDef", EVENT_DEF_NAME_FIELD_ID),
                     ),
                     editorCells = listOf(
                     ),
@@ -404,5 +407,5 @@ private fun visited(who: String, what: String): Box =
     flexContainer(
         notionInstanceRef(who, VISITED_WHO_MEMBER_ID),
         span("visited", VISITED_VISITED_CELL_ID),
-        notionInstanceRef(what, VISITED_WHO_MEMBER_ID),
+        notionInstanceRef(what, VISITED_WHAT_MEMBER_ID),
     )
