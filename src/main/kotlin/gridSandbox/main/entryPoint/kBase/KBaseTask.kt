@@ -18,6 +18,7 @@ import gridSandbox.data.concept.SpecialField
 import gridSandbox.data.concept.fieldCell
 import gridSandbox.data.concept.getConceptId
 import gridSandbox.data.concept.ifPresentCell
+import gridSandbox.data.concept.stringTextCell
 import gridSandbox.data.concept.textCell
 import gridSandbox.data.input.BoxTask
 import gridSandbox.main.entryPoint.kBase.Member
@@ -75,6 +76,8 @@ private const val EVENT_DEF_NAME_FIELD_ID: String = "FieldEventDefName"
 private const val EVENT_DEF_EDITOR_FIELD_ID: String = "FieldEventDefEditor"
 private const val EVENT_DEF_MEMBERS_FIELD_ID: String = "FieldEventDefMembers"
 
+private const val EVENT_DEF_COLUMN_CELL_ID: String = "CellEventDefColumn"
+
 internal const val EVENT_MEMBER_DEF_NAME_FIELD_ID: String = "FieldEventMemberDefName"
 internal const val EVENT_MEMBER_NOTION_DEF_FIELD_ID: String = "FieldEventMemberNotionDef"
 
@@ -93,10 +96,10 @@ private val kBaseRootBox: Box
                         RefField("extends", "NotionDef", "NotionDef", EXTENDS_FIELD_ID),
                     ),
                     editorCells = listOf(
-                        textCell(">>>$BLANK", NOTION_DEF_PREFIX_CELL_ID),
+                        stringTextCell(">>>$BLANK", NOTION_DEF_PREFIX_CELL_ID),
                         fieldCell("name", "NotionDef", NOTION_DEF_NAME_FIELD_ID),
                         ifPresentCell(
-                            textCell(":$BLANK", EXTENDS_COLON_CELL_ID),
+                            stringTextCell(":$BLANK", EXTENDS_COLON_CELL_ID),
                             fieldCell("extends", "NotionDef", EXTENDS_FIELD_ID),
                         ),
                     ),
@@ -109,7 +112,7 @@ private val kBaseRootBox: Box
                     ),
                     editorCells = listOf(
                         fieldCell("name", "NotionInstance", NOTION_INSTANCE_NAME_FIELD_ID),
-                        textCell("${BLANK}is$BLANK", IS_CELL_ID),
+                        stringTextCell("${BLANK}is$BLANK", IS_CELL_ID),
                         fieldCell("notionDef", "NotionInstance", NOTION_DEF_FIELD_ID),
                     ),
                 ),
@@ -121,6 +124,7 @@ private val kBaseRootBox: Box
                         RefField("members", "EventDef", "EventMemberDef", EVENT_DEF_MEMBERS_FIELD_ID, "components"),
                     ),
                     editorCells = listOf(
+                        textCell("column", EVENT_DEF_COLUMN_CELL_ID),
                     ),
                     conceptBoxes = listOf(
                         concept(
@@ -131,7 +135,7 @@ private val kBaseRootBox: Box
                             ),
                             editorCells = listOf(
                                 fieldCell("name", "EventMemberDef", EVENT_MEMBER_DEF_NAME_FIELD_ID),
-                                textCell(":$BLANK", EVENT_MEMBER_COLON_CELL_ID),
+                                stringTextCell(":$BLANK", EVENT_MEMBER_COLON_CELL_ID),
                                 fieldCell("notionDef", "EventMemberDef", EVENT_MEMBER_NOTION_DEF_FIELD_ID),
                             ),
                         ),
@@ -146,11 +150,11 @@ private val kBaseRootBox: Box
                     ),
                     editorCells = listOf(
                         fieldCell("who", "GaveBirth", GAVE_BIRTH_WHO_MEMBER_ID),
-                        textCell("${BLANK}gave birth to$BLANK", GAVE_BIRTH_GAVE_BIRTH_CELL_ID),
+                        stringTextCell("${BLANK}gave birth to$BLANK", GAVE_BIRTH_GAVE_BIRTH_CELL_ID),
                         fieldCell("toWhom", "GaveBirth", GAVE_BIRTH_TO_WHOM_MEMBER_ID),
-                        textCell("${BLANK}(father is$BLANK", GAVE_BIRTH_FATHER_CELL_ID),
+                        stringTextCell("${BLANK}(father is$BLANK", GAVE_BIRTH_FATHER_CELL_ID),
                         fieldCell("father", "GaveBirth", GAVE_BIRTH_FATHER_MEMBER_ID),
-                        textCell(")", GAVE_BIRTH_CLOSE_PAREN_CELL_ID),
+                        stringTextCell(")", GAVE_BIRTH_CLOSE_PAREN_CELL_ID),
                     ),
                 ),
                 predicate(
@@ -161,7 +165,7 @@ private val kBaseRootBox: Box
                     ),
                     editorCells = listOf(
                         fieldCell("who", "Personifies", PERSONIFIES_WHO_MEMBER_ID),
-                        textCell("${BLANK}personfies$BLANK", PERSONIFIES_PERSONIFIES_CELL_ID),
+                        stringTextCell("${BLANK}personfies$BLANK", PERSONIFIES_PERSONIFIES_CELL_ID),
                         fieldCell("what", "Personifies", PERSONIFIES_WHAT_MEMBER_ID),
                     ),
                 ),
@@ -174,9 +178,9 @@ private val kBaseRootBox: Box
                     ),
                     editorCells = listOf(
                         fieldCell("who", "PushInto", PUSH_INTO_WHO_MEMBER_ID),
-                        textCell("${BLANK}pushed$BLANK", PUSH_INTO_PUSHED_CELL_ID),
+                        stringTextCell("${BLANK}pushed$BLANK", PUSH_INTO_PUSHED_CELL_ID),
                         fieldCell("what", "PushInto", PUSH_INTO_WHAT_MEMBER_ID),
-                        textCell("${BLANK}into$BLANK", PUSH_INTO_INTO_CELL_ID),
+                        stringTextCell("${BLANK}into$BLANK", PUSH_INTO_INTO_CELL_ID),
                         fieldCell("intoWhat", "PushInto", PUSH_INTO_INTO_WHAT_MEMBER_ID),
                     ),
                 ),
@@ -188,7 +192,7 @@ private val kBaseRootBox: Box
                     ),
                     editorCells = listOf(
                         fieldCell("who", "Hated", HATED_WHO_MEMBER_ID),
-                        textCell("${BLANK}hated$BLANK", HATED_HATED_CELL_ID),
+                        stringTextCell("${BLANK}hated$BLANK", HATED_HATED_CELL_ID),
                         fieldCell("whom", "Hated", HATED_WHOM_MEMBER_ID),
                     ),
                 ),
@@ -200,7 +204,7 @@ private val kBaseRootBox: Box
                     ),
                     editorCells = listOf(
                         fieldCell("who", "Planned", PLANNED_WHO_MEMBER_ID),
-                        textCell("${BLANK}planned$BLANK", PLANNED_PLANNED_CELL_ID),
+                        stringTextCell("${BLANK}planned$BLANK", PLANNED_PLANNED_CELL_ID),
                         fieldCell("what", "Planned", PLANNED_WHAT_MEMBER_ID),
                     ),
                 ),
@@ -212,7 +216,7 @@ private val kBaseRootBox: Box
                     ),
                     editorCells = listOf(
                         fieldCell("who", "Visited", VISITED_WHO_MEMBER_ID),
-                        textCell("${BLANK}visited$BLANK", VISITED_VISITED_CELL_ID),
+                        stringTextCell("${BLANK}visited$BLANK", VISITED_VISITED_CELL_ID),
                         fieldCell("what", "Visited", VISITED_WHAT_MEMBER_ID),
                     ),
                 ),
