@@ -37,8 +37,8 @@ fun span(text: String, originReferenceId: String? = null): Span =
 fun spanKeyword(text: String, sourceId: String? = null, originId: String? = null): Span =
     SpanBox(text, "keyword", sourceId = sourceId, originId = originId)
 
-fun spanArgumentName(text: String): Span =
-    SpanBox(text, "argument-name")
+fun spanArgumentName(text: String, originReferenceId: String? = null): Span =
+    SpanBox(text, "argument-name", originReferenceId = originReferenceId)
 
 fun spanStringText(
     text: String, sourceId: String? = null, originId: String? = null, originReferenceId: String? = null,

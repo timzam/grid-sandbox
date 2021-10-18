@@ -18,6 +18,7 @@ import gridSandbox.data.concept.SpecialField
 import gridSandbox.data.concept.columnCell
 import gridSandbox.data.concept.fieldCell
 import gridSandbox.data.concept.getConceptId
+import gridSandbox.data.concept.gridCell
 import gridSandbox.data.concept.ifPresentCell
 import gridSandbox.data.concept.rowCell
 import gridSandbox.data.concept.stringTextCell
@@ -129,6 +130,10 @@ private val kBaseRootBox: Box
                             rowCell(
                                 stringTextCell("Predicate:$BLANK", EVENT_DEF_PREDICATE_CELL_ID),
                                 fieldCell("name", "EventDef", EVENT_DEF_NAME_FIELD_ID),
+                            ),
+                            gridCell(
+                                fieldCell("members", "EventDef", EVENT_DEF_MEMBERS_FIELD_ID),
+                                fieldCell("editor", "EventDef", EVENT_DEF_EDITOR_FIELD_ID),
                             ),
                         ),
                     ),
@@ -338,11 +343,11 @@ private fun predicate(conceptName: String, members: List<Member>, editorCells: L
         ),
         gridContainer(
             simpleFlexContainerWithVShift(
-                spanArgumentName("members"),
+                spanArgumentName("members", EVENT_DEF_MEMBERS_FIELD_ID),
             ),
             elementsBox(members),
             simpleFlexContainerWithVShift(
-                spanArgumentName("editor"),
+                spanArgumentName("editor", EVENT_DEF_EDITOR_FIELD_ID),
             ),
             elementsBox(editorCells),
         ),
