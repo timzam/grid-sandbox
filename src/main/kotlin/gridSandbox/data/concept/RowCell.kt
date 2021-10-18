@@ -12,12 +12,10 @@ class RowCell internal constructor(
         throw UnsupportedOperationException()
 
     override fun getBox(): Box {
-        val rowCells = listOf(
-            textCell("row"),
-            *cells.toTypedArray(),
-        )
-        val boxes = rowCells.map { cell -> cell.getBox() }
+        val header = textCell("row")
+        val boxes = cells.map { cell -> cell.getBox() }
         return flexContainer(
+            header.getSpan(),
             *boxes.toTypedArray(),
         )
     }

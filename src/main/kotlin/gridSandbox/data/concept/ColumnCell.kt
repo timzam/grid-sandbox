@@ -12,12 +12,10 @@ class ColumnCell internal constructor(
         throw UnsupportedOperationException()
 
     override fun getBox(): Box {
-        val columnCells = listOf(
-            textCell("column"),
-            *cells.toTypedArray(),
-        )
-        val columnBoxes = columnCells.map { cell -> cell.getBox() }
+        val header = textCell("column")
+        val columnBoxes = cells.map { cell -> cell.getBox() }
         return verticalFlexContainer(
+            header.getSpan(),
             *columnBoxes.toTypedArray(),
         )
     }

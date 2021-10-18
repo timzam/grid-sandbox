@@ -128,6 +128,7 @@ private val kBaseRootBox: Box
                         columnCell(
                             rowCell(
                                 stringTextCell("Predicate:$BLANK", EVENT_DEF_PREDICATE_CELL_ID),
+                                fieldCell("name", "EventDef", EVENT_DEF_NAME_FIELD_ID),
                             ),
                         ),
                     ),
@@ -333,7 +334,7 @@ private fun predicate(conceptName: String, members: List<Member>, editorCells: L
     verticalFlexContainer(
         simpleFlexContainer(
             span("Predicate:", EVENT_DEF_PREDICATE_CELL_ID),
-            spanStringText(conceptName, getConceptId(conceptName)),
+            spanStringText(conceptName, getConceptId(conceptName), originReferenceId = EVENT_DEF_NAME_FIELD_ID),
         ),
         gridContainer(
             simpleFlexContainerWithVShift(
