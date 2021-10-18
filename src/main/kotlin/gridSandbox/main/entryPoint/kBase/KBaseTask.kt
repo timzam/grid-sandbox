@@ -15,11 +15,12 @@ import gridSandbox.data.box.verticalFlexContainer
 import gridSandbox.data.concept.EditorCell
 import gridSandbox.data.concept.RefField
 import gridSandbox.data.concept.SpecialField
+import gridSandbox.data.concept.columnCell
 import gridSandbox.data.concept.fieldCell
 import gridSandbox.data.concept.getConceptId
 import gridSandbox.data.concept.ifPresentCell
+import gridSandbox.data.concept.rowCell
 import gridSandbox.data.concept.stringTextCell
-import gridSandbox.data.concept.textCell
 import gridSandbox.data.input.BoxTask
 import gridSandbox.main.entryPoint.kBase.Member
 
@@ -76,7 +77,7 @@ private const val EVENT_DEF_NAME_FIELD_ID: String = "FieldEventDefName"
 private const val EVENT_DEF_EDITOR_FIELD_ID: String = "FieldEventDefEditor"
 private const val EVENT_DEF_MEMBERS_FIELD_ID: String = "FieldEventDefMembers"
 
-private const val EVENT_DEF_COLUMN_CELL_ID: String = "CellEventDefColumn"
+internal const val EVENT_DEF_PREDICATE_CELL_ID: String = "CellEventDefPredicate"
 
 internal const val EVENT_MEMBER_DEF_NAME_FIELD_ID: String = "FieldEventMemberDefName"
 internal const val EVENT_MEMBER_NOTION_DEF_FIELD_ID: String = "FieldEventMemberNotionDef"
@@ -124,7 +125,11 @@ private val kBaseRootBox: Box
                         RefField("members", "EventDef", "EventMemberDef", EVENT_DEF_MEMBERS_FIELD_ID, "components"),
                     ),
                     editorCells = listOf(
-                        textCell("column", EVENT_DEF_COLUMN_CELL_ID),
+                        columnCell(
+                            rowCell(
+                                stringTextCell("Predicate:$BLANK", EVENT_DEF_PREDICATE_CELL_ID),
+                            ),
+                        ),
                     ),
                     conceptBoxes = listOf(
                         concept(
@@ -327,7 +332,7 @@ private val kBaseRootBox: Box
 private fun predicate(conceptName: String, members: List<Member>, editorCells: List<EditorCell>): Box =
     verticalFlexContainer(
         simpleFlexContainer(
-            span("Predicate:"),
+            span("Predicate:", EVENT_DEF_PREDICATE_CELL_ID),
             spanStringText(conceptName, getConceptId(conceptName)),
         ),
         gridContainer(

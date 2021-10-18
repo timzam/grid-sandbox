@@ -66,6 +66,10 @@ body {
   background-color: #2B2B2B;
 }
 
+.level-6 {
+  background-color: #343434;
+}
+
 .keyword {
   color: #CC7832;
   font-weight: bold;
@@ -97,7 +101,7 @@ body {
 
 [originId]:hover,
 .origin-source-highlight {
-  background-color: #3A3A3A;
+  background-color: #66C7FF;
 }
 
 [originReferenceId]:hover,
