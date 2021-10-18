@@ -134,8 +134,8 @@ private val kBaseRootBox: Box
                             "members", "EventDef", EVENT_DEF_MEMBERS_FIELD_ID,
                             RefType(
                                 "EventMemberDef", "components",
-                                metaInstanceType = RefType("NotionInstance"),
-                            )
+                            ),
+                            metaInstanceType = RefType("NotionInstance"),
                         ),
                     ),
                     editorCells = listOf(
