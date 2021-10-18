@@ -13,6 +13,7 @@ import gridSandbox.data.box.spanReference
 import gridSandbox.data.box.spanStringText
 import gridSandbox.data.box.verticalFlexContainer
 import gridSandbox.data.concept.EditorCell
+import gridSandbox.data.concept.MetaInstanceType
 import gridSandbox.data.concept.RefField
 import gridSandbox.data.concept.SpecialField
 import gridSandbox.data.concept.columnCell
@@ -123,7 +124,11 @@ private val kBaseRootBox: Box
                     fields = listOf(
                         SpecialField("name", "EventDef", EVENT_DEF_NAME_FIELD_ID),
                         SpecialField("editor", "EventDef", EVENT_DEF_EDITOR_FIELD_ID),
-                        RefField("members", "EventDef", "EventMemberDef", EVENT_DEF_MEMBERS_FIELD_ID, "components"),
+                        RefField(
+                            "members", "EventDef", "EventMemberDef",
+                            EVENT_DEF_MEMBERS_FIELD_ID, "components",
+                            metaInstanceType = MetaInstanceType("NotionInstance"),
+                        ),
                     ),
                     editorCells = listOf(
                         columnCell(
