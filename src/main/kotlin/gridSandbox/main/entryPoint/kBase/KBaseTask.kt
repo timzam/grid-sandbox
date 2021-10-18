@@ -13,8 +13,8 @@ import gridSandbox.data.box.spanReference
 import gridSandbox.data.box.spanStringText
 import gridSandbox.data.box.verticalFlexContainer
 import gridSandbox.data.concept.EditorCell
-import gridSandbox.data.concept.MetaInstanceType
 import gridSandbox.data.concept.RefField
+import gridSandbox.data.concept.RefType
 import gridSandbox.data.concept.SpecialField
 import gridSandbox.data.concept.columnCell
 import gridSandbox.data.concept.fieldCell
@@ -96,7 +96,10 @@ private val kBaseRootBox: Box
                     "NotionDef",
                     fields = listOf(
                         SpecialField("name", "NotionDef", NOTION_DEF_NAME_FIELD_ID),
-                        RefField("extends", "NotionDef", "NotionDef", EXTENDS_FIELD_ID),
+                        RefField(
+                            "extends", "NotionDef", EXTENDS_FIELD_ID,
+                            RefType("NotionDef"),
+                        )
                     ),
                     editorCells = listOf(
                         stringTextCell(">>>$BLANK", NOTION_DEF_PREFIX_CELL_ID),
@@ -111,7 +114,10 @@ private val kBaseRootBox: Box
                     "NotionInstance",
                     fields = listOf(
                         SpecialField("name", "NotionInstance", NOTION_INSTANCE_NAME_FIELD_ID),
-                        RefField("notionDef", "NotionInstance", "NotionDef", NOTION_DEF_FIELD_ID),
+                        RefField(
+                            "notionDef", "NotionInstance", NOTION_DEF_FIELD_ID,
+                            RefType("NotionDef"),
+                        ),
                     ),
                     editorCells = listOf(
                         fieldCell("name", "NotionInstance", NOTION_INSTANCE_NAME_FIELD_ID),
@@ -125,9 +131,11 @@ private val kBaseRootBox: Box
                         SpecialField("name", "EventDef", EVENT_DEF_NAME_FIELD_ID),
                         SpecialField("editor", "EventDef", EVENT_DEF_EDITOR_FIELD_ID),
                         RefField(
-                            "members", "EventDef", "EventMemberDef",
-                            EVENT_DEF_MEMBERS_FIELD_ID, "components",
-                            metaInstanceType = MetaInstanceType("NotionInstance"),
+                            "members", "EventDef", EVENT_DEF_MEMBERS_FIELD_ID,
+                            RefType(
+                                "EventMemberDef", "components",
+                                metaInstanceType = RefType("NotionInstance"),
+                            )
                         ),
                     ),
                     editorCells = listOf(
@@ -147,7 +155,10 @@ private val kBaseRootBox: Box
                             "EventMemberDef",
                             fields = listOf(
                                 SpecialField("name", "EventMemberDef", EVENT_MEMBER_DEF_NAME_FIELD_ID),
-                                RefField("notionDef", "EventMemberDef", "NotionDef", EVENT_MEMBER_NOTION_DEF_FIELD_ID),
+                                RefField(
+                                    "notionDef", "EventMemberDef", EVENT_MEMBER_NOTION_DEF_FIELD_ID,
+                                    RefType("NotionDef"),
+                                ),
                             ),
                             editorCells = listOf(
                                 fieldCell("name", "EventMemberDef", EVENT_MEMBER_DEF_NAME_FIELD_ID),

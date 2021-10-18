@@ -7,6 +7,7 @@ import gridSandbox.data.box.spanContainer
 import gridSandbox.data.box.spanReference
 import gridSandbox.data.box.spanStringText
 import gridSandbox.data.concept.RefField
+import gridSandbox.data.concept.RefType
 import gridSandbox.data.concept.SpecialField
 import gridSandbox.data.concept.fieldCell
 import gridSandbox.data.concept.spanCell
@@ -36,7 +37,10 @@ private val citiesRootBox: Box
                     "Country",
                     fields = listOf(
                         SpecialField("name", "Country", COUNTRY_NAME_FIELD_ID),
-                        RefField("capital", "Country", "City", CAPITAL_FIELD_ID),
+                        RefField(
+                            "capital", "Country", CAPITAL_FIELD_ID,
+                            RefType("City"),
+                        ),
                     ),
                     editorCells = listOf(
                         stringTextCell("country", COUNTRY_COUNTRY_CELL_ID),
@@ -49,7 +53,10 @@ private val citiesRootBox: Box
                     "City",
                     fields = listOf(
                         SpecialField("name", "City", CITY_NAME_FIELD_ID),
-                        RefField("country", "City", "Country", COUNTRY_FIELD_ID),
+                        RefField(
+                            "country", "City", COUNTRY_FIELD_ID,
+                            RefType("Country"),
+                        ),
                     ),
                     editorCells = listOf(
                         stringTextCell("city", CITY_CITY_CELL_ID),
