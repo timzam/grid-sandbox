@@ -12,7 +12,11 @@ import gridSandbox.data.box.spanContainer
 import gridSandbox.data.box.spanReference
 import gridSandbox.data.box.spanStringText
 import gridSandbox.data.box.verticalFlexContainer
+import gridSandbox.data.concept.BuiltInQueryVariable
+import gridSandbox.data.concept.DataPattern
 import gridSandbox.data.concept.EditorCell
+import gridSandbox.data.concept.FieldRefAttribute
+import gridSandbox.data.concept.QueryVariableDef
 import gridSandbox.data.concept.RefField
 import gridSandbox.data.concept.RefType
 import gridSandbox.data.concept.SpecialField
@@ -132,10 +136,22 @@ private val kBaseRootBox: Box
                         SpecialField("editor", "EventDef", EVENT_DEF_EDITOR_FIELD_ID),
                         RefField(
                             "members", "EventDef", EVENT_DEF_MEMBERS_FIELD_ID,
-                            RefType(
-                                "EventMemberDef", "components",
+                            RefType("EventMemberDef", "components"),
+                            metaInstanceType = RefType(
+                                "NotionInstance",
+                                clauses = listOf(
+                                    DataPattern(
+                                        BuiltInQueryVariable("field-eventMemberDef"),
+                                        FieldRefAttribute("notionDef", "EventMemberDef"),
+                                        QueryVariableDef("field-notion-def"),
+                                    ),
+                                    DataPattern(
+                                        BuiltInQueryVariable("ref-notionInstance"),
+                                        FieldRefAttribute("notionDef", "NotionInstance"),
+                                        QueryVariableDef("candidate-notion-def"),
+                                    ),
+                                ),
                             ),
-                            metaInstanceType = RefType("NotionInstance"),
                         ),
                     ),
                     editorCells = listOf(
