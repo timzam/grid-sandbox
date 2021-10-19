@@ -3,7 +3,7 @@ package gridSandbox.main.entryPoint
 import gridSandbox.data.box.Box
 import gridSandbox.data.box.Span
 import gridSandbox.data.box.flexContainer
-import gridSandbox.data.box.gridContainer
+import gridSandbox.data.box.gridTwoColumns
 import gridSandbox.data.box.simpleFlexContainer
 import gridSandbox.data.box.simpleFlexContainerWithVShift
 import gridSandbox.data.box.span
@@ -372,7 +372,7 @@ private fun predicate(conceptName: String, members: List<Member>, editorCells: L
             span("Predicate:", EVENT_DEF_PREDICATE_CELL_ID),
             spanStringText(conceptName, getConceptId(conceptName), originReferenceId = EVENT_DEF_NAME_FIELD_ID),
         ),
-        gridContainer(
+        gridTwoColumns(
             simpleFlexContainerWithVShift(
                 spanArgumentName("members", EVENT_DEF_MEMBERS_FIELD_ID),
             ),

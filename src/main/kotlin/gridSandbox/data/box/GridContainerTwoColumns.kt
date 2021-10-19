@@ -3,12 +3,12 @@ package gridSandbox.data.box
 import kotlinx.html.FlowContent
 import kotlinx.html.div
 
-class GridContainer internal constructor(
+class GridContainerTwoColumns internal constructor(
     private val boxes: List<Box>,
 ) : Box {
 
     override fun getBlock(currentLevel: Int): FlowContent.() -> Unit = {
-        div("grid-container") {
+        div("grid-container-two-columns") {
             for (box in boxes) {
                 val block = box.getBlock(currentLevel)
                 block(this)
@@ -18,5 +18,5 @@ class GridContainer internal constructor(
 
 }
 
-fun gridContainer(vararg boxes: Box): Box =
-    GridContainer(boxes.toList())
+fun gridTwoColumns(vararg boxes: Box): Box =
+    GridContainerTwoColumns(boxes.toList())

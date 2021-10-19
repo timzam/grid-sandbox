@@ -29,7 +29,7 @@ body {
   flex-direction: column;
 }
 
-.grid-container {
+.grid-container-two-columns {
   display: grid;
   grid-template-columns: auto auto;
   column-gap: 0.6em;

@@ -1,7 +1,7 @@
 package gridSandbox.main.entryPoint
 
 import gridSandbox.data.box.Box
-import gridSandbox.data.box.gridContainer
+import gridSandbox.data.box.gridTwoColumns
 import gridSandbox.data.box.simpleFlexContainer
 import gridSandbox.data.box.simpleFlexContainerWithHShift
 import gridSandbox.data.box.simpleFlexContainerWithVShift
@@ -37,7 +37,7 @@ internal fun concept(conceptName: String, fields: List<ConceptField>, editorCell
             spanKeyword("concept"),
             spanStringText(conceptName, getConceptId(conceptName)),
         ),
-        gridContainer(
+        gridTwoColumns(
             simpleFlexContainerWithVShift(
                 spanArgumentName("fields"),
             ),
@@ -57,7 +57,7 @@ internal fun metaConcept(
             spanKeyword("meta concept"),
             spanStringText(conceptName, getConceptId(conceptName)),
         ),
-        gridContainer(
+        gridTwoColumns(
             simpleFlexContainerWithVShift(
                 spanArgumentName("fields"),
             ),
