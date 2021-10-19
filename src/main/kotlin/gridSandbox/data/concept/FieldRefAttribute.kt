@@ -7,7 +7,7 @@ import gridSandbox.data.box.spanReference
 class FieldRefAttribute constructor(
     private val fieldName: String,
     private val conceptName: String,
-) : PatternElement {
+) : InterfaceElement {
 
     override fun getBox(): Box =
         flexContainer(

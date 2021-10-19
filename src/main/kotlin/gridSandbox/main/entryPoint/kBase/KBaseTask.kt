@@ -13,10 +13,10 @@ import gridSandbox.data.box.spanReference
 import gridSandbox.data.box.spanStringText
 import gridSandbox.data.box.verticalFlexContainer
 import gridSandbox.data.concept.BuiltInQueryVariable
-import gridSandbox.data.concept.DataPattern
+import gridSandbox.data.concept.DatalogDotExpression
+import gridSandbox.data.concept.DatalogInfixExpression
 import gridSandbox.data.concept.EditorCell
 import gridSandbox.data.concept.FieldRefAttribute
-import gridSandbox.data.concept.QueryVariableDef
 import gridSandbox.data.concept.RefField
 import gridSandbox.data.concept.RefType
 import gridSandbox.data.concept.SpecialField
@@ -139,16 +139,15 @@ private val kBaseRootBox: Box
                             RefType("EventMemberDef", "components"),
                             metaInstanceType = RefType(
                                 "NotionInstance",
-                                clauses = listOf(
-                                    DataPattern(
-                                        BuiltInQueryVariable("field-eventMemberDef"),
-                                        FieldRefAttribute("notionDef", "EventMemberDef"),
-                                        QueryVariableDef("field-notion-def"),
-                                    ),
-                                    DataPattern(
+                                datalogExpression = DatalogInfixExpression(
+                                    "extends-transitively",
+                                    DatalogDotExpression(
                                         BuiltInQueryVariable("ref-notionInstance"),
                                         FieldRefAttribute("notionDef", "NotionInstance"),
-                                        QueryVariableDef("candidate-notion-def"),
+                                    ),
+                                    DatalogDotExpression(
+                                        BuiltInQueryVariable("field-eventMemberDef"),
+                                        FieldRefAttribute("notionDef", "EventMemberDef"),
                                     ),
                                 ),
                             ),

@@ -6,6 +6,10 @@ import gridSandbox.data.box.span
 import gridSandbox.data.box.spanContainer
 import gridSandbox.data.box.spanReference
 import gridSandbox.data.box.spanStringText
+import gridSandbox.data.concept.BuiltInQueryVariable
+import gridSandbox.data.concept.DatalogDotExpression
+import gridSandbox.data.concept.DatalogInfixExpression
+import gridSandbox.data.concept.FieldRefAttribute
 import gridSandbox.data.concept.RefField
 import gridSandbox.data.concept.RefType
 import gridSandbox.data.concept.SpecialField
@@ -39,7 +43,17 @@ private val citiesRootBox: Box
                         SpecialField("name", "Country", COUNTRY_NAME_FIELD_ID),
                         RefField(
                             "capital", "Country", CAPITAL_FIELD_ID,
-                            RefType("City"),
+                            RefType(
+                                "City",
+                                datalogExpression = DatalogInfixExpression(
+                                    "==",
+                                    DatalogDotExpression(
+                                        BuiltInQueryVariable("ref-city"),
+                                        FieldRefAttribute("country", "City"),
+                                    ),
+                                    BuiltInQueryVariable("parent-country"),
+                                ),
+                            ),
                         ),
                     ),
                     editorCells = listOf(

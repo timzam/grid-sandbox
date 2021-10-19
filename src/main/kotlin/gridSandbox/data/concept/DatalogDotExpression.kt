@@ -4,13 +4,16 @@ import gridSandbox.data.box.Box
 import gridSandbox.data.box.flexContainer
 import gridSandbox.data.box.span
 
-class BuiltInQueryVariable constructor(
-    private val variableName: String,
+class DatalogDotExpression constructor(
+    private val entityExpression: DatalogExpression,
+    private val attribute: FieldRefAttribute,
 ) : DatalogExpression {
 
     override fun getBox(): Box =
         flexContainer(
-            span("$variableName"),
+            entityExpression.getBox(),
+            span("."),
+            attribute.getBox(),
         )
 
 }

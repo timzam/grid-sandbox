@@ -74,6 +74,10 @@ body {
   background-color: #2B2B2B;
 }
 
+.level-8 {
+  background-color: #343434;
+}
+
 .keyword {
   color: #CC7832;
   font-weight: bold;

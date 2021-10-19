@@ -10,7 +10,7 @@ import gridSandbox.data.box.verticalFlexContainer
 class RefType constructor(
     private val refConceptName: String,
     private val refFieldKind: String = "ref",
-    private val clauses: List<DataPattern> = emptyList(),
+    private val datalogExpression: DatalogExpression? = null,
 ) : InterfaceElement {
 
     override fun getBox(): Box {
@@ -18,13 +18,12 @@ class RefType constructor(
             spanReference(refConceptName, getConceptId(refConceptName)),
             span(refFieldKind),
         )
-        val clauseBoxes = clauses.map { clause -> clause.getBox() }.toTypedArray()
-        return if (clauses.isEmpty()) {
+        return if (datalogExpression == null) {
             flexContainer(*boxes.toTypedArray())
         } else {
             verticalFlexContainer(
                 simpleFlexContainerWithHShift(*boxes.toTypedArray()),
-                *clauseBoxes,
+                datalogExpression.getBox(),
             )
         }
     }
