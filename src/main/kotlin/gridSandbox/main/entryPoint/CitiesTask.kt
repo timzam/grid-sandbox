@@ -14,7 +14,6 @@ import gridSandbox.data.concept.RefField
 import gridSandbox.data.concept.RefType
 import gridSandbox.data.concept.SpecialField
 import gridSandbox.data.concept.fieldCell
-import gridSandbox.data.concept.spanCell
 import gridSandbox.data.concept.stringTextCell
 import gridSandbox.data.input.BoxTask
 
@@ -57,9 +56,9 @@ private val citiesRootBox: Box
                         ),
                     ),
                     editorCells = listOf(
-                        stringTextCell("country", COUNTRY_COUNTRY_CELL_ID),
+                        stringTextCell("country$BLANK", COUNTRY_COUNTRY_CELL_ID),
                         fieldCell("name", "Country", COUNTRY_NAME_FIELD_ID),
-                        stringTextCell("with capital:", WITH_CAPITAL_CELL_ID),
+                        stringTextCell("${BLANK}with capital:$BLANK", WITH_CAPITAL_CELL_ID),
                         fieldCell("capital", "Country", CAPITAL_FIELD_ID),
                     ),
                 ),
@@ -73,13 +72,11 @@ private val citiesRootBox: Box
                         ),
                     ),
                     editorCells = listOf(
-                        stringTextCell("city", CITY_CITY_CELL_ID),
+                        stringTextCell("city$BLANK", CITY_CITY_CELL_ID),
                         fieldCell("name", "City", CITY_NAME_FIELD_ID),
-                        spanCell(
-                            stringTextCell("(", OPEN_PAREN_CELL_ID),
-                            fieldCell("country", "City", COUNTRY_FIELD_ID),
-                            stringTextCell(")", CLOSE_PAREN_CELL_ID),
-                        ),
+                        stringTextCell("$BLANK(", OPEN_PAREN_CELL_ID),
+                        fieldCell("country", "City", COUNTRY_FIELD_ID),
+                        stringTextCell(")", CLOSE_PAREN_CELL_ID),
                     ),
                 ),
             ),

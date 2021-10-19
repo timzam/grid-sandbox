@@ -90,7 +90,7 @@ internal const val EVENT_MEMBER_NOTION_DEF_FIELD_ID: String = "FieldEventMemberN
 
 internal const val EVENT_MEMBER_COLON_CELL_ID: String = "CellEventMemberColon"
 
-private const val BLANK: Char = '\u23B5'
+internal const val BLANK: Char = '\u23B5'
 
 private val kBaseRootBox: Box
     get() =
