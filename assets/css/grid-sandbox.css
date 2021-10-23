@@ -13,7 +13,7 @@
 
 body {
   font-family: 'Inconsolata', monospace;
-  background-color: #2B2B2B;
+  background-color: #0D0D0D;
   color: #A9B7C6;
 }
 
@@ -47,7 +47,7 @@ body {
 }
 
 .level-1 {
-  background-color: #2B2B2B;
+  background-color: #0D0D0D;
 }
 
 .level-2 {
@@ -55,7 +55,7 @@ body {
 }
 
 .level-3 {
-  background-color: #2B2B2B;
+  background-color: #0D0D0D;
 }
 
 .level-4 {
@@ -63,7 +63,7 @@ body {
 }
 
 .level-5 {
-  background-color: #2B2B2B;
+  background-color: #0D0D0D;
 }
 
 .level-6 {
@@ -71,7 +71,7 @@ body {
 }
 
 .level-7 {
-  background-color: #2B2B2B;
+  background-color: #0D0D0D;
 }
 
 .level-8 {
@@ -79,21 +79,21 @@ body {
 }
 
 .keyword {
-  color: #CC7832;
+  color: #E08538;
   font-weight: bold;
 }
 
 .argument-name {
-  color: #467CDA;
+  color: #508DF7;
 }
 
 .string-text {
-  color: #6A8759;
+  color: #83A56E;
   font-weight: bold;
 }
 
 .reference {
-  color: #9876AA;
+  color: #C196D8;
   font-weight: bold;
 }
 
@@ -104,7 +104,7 @@ body {
 
 [referenceId]:hover,
 .reference-highlight {
-  background-color: #155221;
+  background-color: #082E10;
 }
 
 [originId]:hover,
